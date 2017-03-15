@@ -1,0 +1,9 @@
+.DS_Store
+*.log
+
+node_modules/
+
+# Build
+dist/
+public/bundle.js
+public/css/styles.css
