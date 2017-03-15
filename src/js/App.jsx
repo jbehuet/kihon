@@ -36,3 +36,10 @@ ReactDOM.render(
         <Route path="/" component={Main}></Route>
     </Router>
 </MuiThemeProvider>, document.getElementById('app'));
+
+
+import { install, applyUpdate } from 'offline-plugin/runtime';
+
+install({
+  onUpdateReady: () => applyUpdate()
+});
