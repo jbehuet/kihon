@@ -4,10 +4,12 @@ const webpack = require('webpack'),
     ExtractTextPlugin = require("extract-text-webpack-plugin"),
     production = (process.argv.indexOf("production") > -1)
 
+let entry = ['./src/js/App.jsx']
+if (!production) entry.push('webpack-dev-server/client?http://localhost:3000')
 
 module.exports = {
     entry: {
-        javascript: ['./src/js/App.jsx'].concat(!production ? ['webpack-dev-server/client?http://localhost:3000'] : '')
+        javascript: entry
     },
     output: {
         path: path.join(__dirname, 'public'),
