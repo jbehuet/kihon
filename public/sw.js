@@ -6,11 +6,11 @@ self.addEventListener('install', function(event) {
     event.waitUntil(
 
         // Open the Cache
-        caches.open(cacheName).then(function(cache) {
+        caches.open('cacheAikido').then(function(cache) {
             console.log('Service Worker: Caching App Shell at the moment......');
 
             // Add Files to the Cache
-            return cache.addAll(filesToCache);
+            //return cache.addAll(filesToCache);
         })
     );
 });

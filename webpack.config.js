@@ -2,8 +2,7 @@ const webpack = require('webpack'),
     path = require('path'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     ExtractTextPlugin = require("extract-text-webpack-plugin"),
-    production = (process.argv.indexOf("production") > -1),
-    OfflinePlugin = require('offline-plugin');
+    production = (process.argv.indexOf("production") > -1)
 
 
 module.exports = {
@@ -56,12 +55,6 @@ module.exports = {
                 }),
                 new webpack.DefinePlugin({
                     'process.env.NODE_ENV': '"production"'
-                }),
-                new OfflinePlugin({
-                    excludes: ["images/*"],
-                    ServiceWorker: {
-                        events: true
-                    }
                 })
             ] : []
         )
