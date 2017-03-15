@@ -9,6 +9,7 @@ npm install
 
 # Cleaning dist directory
 rm -rf dist/
+mkdir dist/
 
 # Build
 npm run build
