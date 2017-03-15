@@ -8,7 +8,7 @@ const styles = {
     },
     container: {
         textAlign: 'center',
-        backgroundImage: "url('/images/bg2.png')",
+        backgroundImage: "url('images/bg2.png')",
         backgroundRepeat: 'no-repeat',
         backgroundAttachment: 'fixed',
         backgroundPosition: 'center'

@@ -18,7 +18,7 @@ const styles = {
 const tilesData = {
   bases:[
         {
-            img: '/images/movements/Ikkyo.png',
+            img: 'images/movements/Ikkyo.png',
             title: 'Ikkyo'
         }, {
             img: 'images/movements/Nikyo.png',
@@ -36,7 +36,7 @@ const tilesData = {
   ],
   variantes:[
     {
-        img: '/images/movements/Ude_garami.png',
+        img: 'images/movements/Ude_garami.png',
         title: 'Ude garami'
     }, {
         img: 'images/movements/Hiji_kime_osae.png',
