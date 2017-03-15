@@ -38,8 +38,8 @@ ReactDOM.render(
 </MuiThemeProvider>, document.getElementById('app'));
 
 
-import { install, applyUpdate } from 'offline-plugin/runtime';
-
-install({
-  onUpdateReady: () => applyUpdate()
-});
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+             .register('./sw.js')
+             .then(function() { console.log('Service Worker Registered'); });
+  }

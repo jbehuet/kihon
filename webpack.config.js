@@ -2,15 +2,13 @@ const webpack = require('webpack'),
     path = require('path'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     ExtractTextPlugin = require("extract-text-webpack-plugin"),
-    production = (process.argv.indexOf("production") > -1)
+    production = (process.argv.indexOf("production") > -1),
+    OfflinePlugin = require('offline-plugin');
 
-
-let entry = ['./src/js/App.jsx']
-if (!production) entry.push('webpack-dev-server/client?http://localhost:3000')
 
 module.exports = {
     entry: {
-        javascript: entry
+        javascript: ['./src/js/App.jsx'].concat(!production ? ['webpack-dev-server/client?http://localhost:3000'] : '')
     },
     output: {
         path: path.join(__dirname, 'public'),
@@ -56,6 +54,15 @@ module.exports = {
                         warnings: false,
                     },
                 }),
+                new webpack.DefinePlugin({
+                    'process.env.NODE_ENV': '"production"'
+                }),
+                new OfflinePlugin({
+                    excludes: ["images/*"],
+                    ServiceWorker: {
+                        events: true
+                    }
+                })
             ] : []
         )
     )
