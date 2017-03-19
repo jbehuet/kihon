@@ -29,11 +29,16 @@ module.exports = {
                 exclude: /(node_modules|bower_components)/
             },
             {
+                test: /\.css$/,
+                loader: 'style-loader!css-loader?modules',
+                include: /flexboxgrid/
+            },
+            {
                 test: /\.scss$/,
                 loader: ExtractTextPlugin.extract({
                     fallback: "style-loader",
                     use: ['css-loader', 'sass-loader']
-                })
+                }),
             }
         ]
     },

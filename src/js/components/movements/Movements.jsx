@@ -1,22 +1,17 @@
-import React, { Component } from 'react';
-import {GridList, GridTile} from 'material-ui/GridList';
-import Subheader from 'material-ui/Subheader';
-import IconButton from 'material-ui/IconButton';
+import React, {Component} from 'react';
+import {Grid, Row, Col} from 'react-flexbox-grid';
+import {Card, CardActions, CardMedia, CardTitle} from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
 import Info from 'material-ui/svg-icons/action/info';
 
 const styles = {
-    root: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-around'
-    },
-    gridList: {
-        overflowY: 'auto'
+    card: {
+        marginBottom: '10px'
     }
 };
 
 const tilesData = {
-  bases:[
+    bases: [
         {
             img: 'images/movements/Ikkyo.png',
             title: 'Ikkyo'
@@ -33,53 +28,48 @@ const tilesData = {
             img: 'images/movements/Gokyo.png',
             title: 'Gokyo'
         }
-  ],
-  variantes:[
-    {
-        img: 'images/movements/Ude_garami.png',
-        title: 'Ude garami'
-    }, {
-        img: 'images/movements/Hiji_kime_osae.png',
-        title: 'Hiji kime osae'
-    }
-  ]
+    ],
+    variantes: [
+        {
+            img: 'images/movements/Ude_garami.png',
+            title: 'Ude garami'
+        }, {
+            img: 'images/movements/Hiji_kime_osae.png',
+            title: 'Hiji kime osae'
+        }
+    ]
 };
-
 
 class Movements extends Component {
 
-  constructor() {
-    super();
-  }
+    constructor() {
+        super();
+    }
 
-  render() {
-      return (
-          <div style={styles.root}>
-              <GridList cols={3} cellHeight={160} style={styles.gridList}>
-                <Subheader><h2>Base (Osae waza)</h2></Subheader>
-                  {tilesData.bases.map((tile) => (
-                      <GridTile
-                          key={tile.img}
-                          title={tile.title}
-                          actionIcon={ <IconButton><Info color="white"/></IconButton> }>
-                          <img src={tile.img} style={styles.img}/>
-                      </GridTile>
-                  ))}
-              </GridList>
-              <GridList cols={3} cellHeight={160} style={styles.gridList}>
-                <Subheader><h2>Variantes</h2></Subheader>
-                  {tilesData.variantes.map((tile) => (
-                      <GridTile
-                          key={tile.img}
-                          title={tile.title}
-                          actionIcon={ <IconButton><Info color="white"/></IconButton> }>
-                          <img src={tile.img} style={styles.img}/>
-                      </GridTile>
-                  ))}
-              </GridList>
-          </div>
-      )
-  }
+    render() {
+        return (
+            <div>
+                <h2>Base (Osae waza)</h2>
+                <Grid fluid>
+                    <Row>
+                        {tilesData.bases.map((tile) => (
+                            <Col key={tile.img} xs={6} md={3}>
+                                <Card style={styles.card}>
+                                    <CardMedia>
+                                        <img src={tile.img}/>
+                                    </CardMedia>
+                                    <CardTitle title={tile.title}/>
+                                    <CardActions>
+                                        <FlatButton label="Détails" labelPosition="after" primary={true} icon={<Info/>}/>
+                                    </CardActions>
+                                </Card>
+                            </Col>
+                        ))}
+                    </Row>
+                </Grid>
+            </div>
+        )
+    }
 }
 
 export default Movements
