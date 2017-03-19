@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Header from './common/Header';
 import Movements from './movements/Movements';
 
 const styles = {
     app: {
-      height: '100%',
+        height: '100%'
     },
     container: {
-        textAlign: 'center',
-        backgroundImage: "url('images/bg2.png')",
+        marginTop: '64px',
+        backgroundImage: "url('images/bg3.png')",
         backgroundRepeat: 'no-repeat',
         backgroundAttachment: 'fixed',
         backgroundPosition: 'center'
@@ -20,7 +20,8 @@ class Main extends Component {
     constructor() {
         super();
         this.state = {
-            open: false
+            open: false,
+            list: false
         };
     }
 
@@ -32,12 +33,19 @@ class Main extends Component {
         this.setState({open: true});
     }
 
+    handleChangeDisplay(event) {
+        this.setState({
+            list: !this.state.list
+        });
+    }
+
     render() {
+        const containerStyle = (this.state.list ? {...styles.container} : {...styles.container, textAlign: 'center'});
         return (
             <div style={styles.app}>
-                <Header></Header>
-                <div style={styles.container}>
-                    <Movements></Movements>
+                <Header onClickChangeView={this.handleChangeDisplay.bind(this)}></Header>
+                <div style={containerStyle}>
+                    <Movements list={this.state.list}></Movements>
                 </div>
             </div>
         );
