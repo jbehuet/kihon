@@ -3,7 +3,6 @@ import Drawer from 'material-ui/Drawer';
 import Divider from 'material-ui/Divider';
 import Checkbox from 'material-ui/Checkbox';
 import MenuItem from 'material-ui/MenuItem';
-import Subheader from 'material-ui/Subheader';
 import RaisedButton from 'material-ui/RaisedButton';
 
 const styles = {
@@ -47,7 +46,6 @@ class SideNav extends Component {
                 <MenuItem onTouchTap={this.handleChange.bind(this)}>Accueil</MenuItem>
                 <Divider/>
                 <MenuItem disabled={true}>Filtre</MenuItem>
-                <Subheader>Immobilisations</Subheader>
                 <Checkbox label="5e Kyu" checkedIcon={<img src='images/belts/5e_kyu.png' width="24"/>} uncheckedIcon={<img src='images/belts/6e_kyu.png' width="24"/>} style={styles.checkbox}/>
                 <Checkbox label="4e Kyu" checkedIcon={<img src='images/belts/4e_kyu.png' width="24"/>} uncheckedIcon={<img src='images/belts/6e_kyu.png' width="24"/>} style={styles.checkbox}/>
                 <Checkbox label="3e Kyu" checkedIcon={<img src='images/belts/3e_kyu.png' width="24"/>} uncheckedIcon={<img src='images/belts/6e_kyu.png' width="24"/>} style={styles.checkbox}/>
