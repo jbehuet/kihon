@@ -103,9 +103,9 @@ const tilesData = {
               min: "2"
           },
           {
-              img: 'images/movements/Juji_nage.png',
-              title: 'Juji nage',
-              min: "1"
+              img: 'images/movements/Juji_garami.png',
+              title: 'Juji garami',
+              min: "2"
           },
           {
               img: 'images/movements/Ushiro_kiri_otoshi.png',
