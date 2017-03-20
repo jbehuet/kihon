@@ -35,11 +35,20 @@ class Header extends Component {
         this.props.onClickChangeView();
     }
 
+    handleChangeKyu(kyu) {
+      this.props.onChangeKyu(kyu)
+      this.setState({
+          open: !this.state.open
+      });
+    }
+
     render() {
         const rightButton = (this.state.list ? <ViewModule /> : <ViewList />);
         return (
             <div>
-                <SideNav open={this.state.open} onRequestChange={this.handleLeftIconButtonTouchTap.bind(this)}></SideNav>
+                <SideNav open={this.state.open}
+                          onRequestChange={this.handleLeftIconButtonTouchTap.bind(this)}
+                          onChangeKyu={this.handleChangeKyu.bind(this)}></SideNav>
                 <AppBar title="Aikido - 合気道" style={styles.header}
                         iconElementRight={<IconButton>{rightButton}</IconButton>}
                         onRightIconButtonTouchTap={this.handleRightIconButtonTouchTap.bind(this)}

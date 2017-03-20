@@ -21,7 +21,8 @@ class Main extends Component {
         super();
         this.state = {
             open: false,
-            list: false
+            list: false,
+            kyu: 0
         };
     }
 
@@ -39,13 +40,17 @@ class Main extends Component {
         });
     }
 
+    handleChangeKyu(kyu) {
+        this.setState({kyu});
+    }
+
     render() {
         const containerStyle = (this.state.list ? {...styles.container} : {...styles.container, textAlign: 'center'});
         return (
             <div style={styles.app}>
-                <Header onClickChangeView={this.handleChangeDisplay.bind(this)}></Header>
+                <Header onClickChangeView={this.handleChangeDisplay.bind(this)} onChangeKyu={this.handleChangeKyu.bind(this)}></Header>
                 <div style={containerStyle}>
-                    <Movements list={this.state.list}></Movements>
+                    <Movements list={this.state.list} kyu={this.state.kyu}></Movements>
                 </div>
             </div>
         );

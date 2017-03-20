@@ -33,19 +33,23 @@ class SideNav extends Component {
         super();
     }
 
-    handleChange() {
+    handleRequestChange() {
         this.props.onRequestChange(this.props.open)
+    }
+
+    handleChangeKyu(event, value){
+      this.props.onChangeKyu(value)
     }
 
     render() {
         return (
-            <Drawer docked={false} width={200} open={this.props.open} onRequestChange={this.handleChange.bind(this)}>
+            <Drawer docked={false} width={200} open={this.props.open} onRequestChange={this.handleRequestChange.bind(this)}>
 
                 <MenuItem style={styles.header} disabled={true}>Aikido - 合気道</MenuItem>
-                <MenuItem onTouchTap={this.handleChange.bind(this)}>Accueil</MenuItem>
+                <MenuItem onTouchTap={this.handleRequestChange.bind(this)}>Accueil</MenuItem>
                 <Divider/>
                 <MenuItem disabled={true}>Filtre</MenuItem>
-                <RadioButtonGroup name="belts" defaultSelected="0">
+                <RadioButtonGroup name="belts" defaultSelected="0" onChange={this.handleChangeKyu.bind(this)}>
                     <RadioButton value="5" label="5e Kyu" checkedIcon={< img src = 'images/belts/5e_kyu.png' width = "24" />} uncheckedIcon={< img src = 'images/belts/6e_kyu.png' width = "24" />} style={styles.radio}/>
                     <RadioButton value="4" label="4e Kyu" checkedIcon={< img src = 'images/belts/4e_kyu.png' width = "24" />} uncheckedIcon={< img src = 'images/belts/6e_kyu.png' width = "24" />} style={styles.radio}/>
                     <RadioButton value="3" label="3e Kyu" checkedIcon={< img src = 'images/belts/3e_kyu.png' width = "24" />} uncheckedIcon={< img src = 'images/belts/6e_kyu.png' width = "24" />} style={styles.radio}/>

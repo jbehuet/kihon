@@ -33,7 +33,8 @@ const muiTheme = getMuiTheme({
 ReactDOM.render(
     <MuiThemeProvider muiTheme={muiTheme}>
     <Router history={hashHistory}>
-        <Route path="/" component={Main}></Route>
+        <Route path="/" component={Main}>
+        </Route>
     </Router>
 </MuiThemeProvider>, document.getElementById('app'));
 
