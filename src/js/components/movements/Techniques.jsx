@@ -7,11 +7,16 @@ import FlatButton from 'material-ui/FlatButton';
 
 const styles = {
     card: {
-        marginBottom: '10px'
+        marginBottom: '10px',
+        textAlign: 'center'
+    },
+    title: {
+        color:'#AB232F',
+        fontSize: '16px'
     }
 };
 
-const tilesData = {
+const techniquesData = {
     immobilisations: {
         bases: [
             {
@@ -50,83 +55,71 @@ const tilesData = {
     },
     projections: {
         bases: [
-          {
-              img: 'images/movements/Irimi_nage.png',
-              title: 'Irimi nage',
-              min: "5"
-          },
-          {
-              img: 'images/movements/Shihoo_nage.png',
-              title: 'Shihoo nage',
-              min: "5"
-          },
-          {
-              img: 'images/movements/Kote_gaeshi.png',
-              title: 'Kote gaeshi',
-              min: "4"
-          },
-          {
-              img: 'images/movements/Kaiten_nage.png',
-              title: 'Kaiten nage',
-              min: "4"
-          },
-          {
-              img: 'images/movements/Tenchi_nage.png',
-              title: 'Tenchi nage',
-              min: "4"
-          },
-          {
-              img: 'images/movements/Kokyu_hoo.png',
-              title: 'Kokyu hoo',
-              min: "5"
-          }
+            {
+                img: 'images/movements/Irimi_nage.png',
+                title: 'Irimi nage',
+                min: "5"
+            }, {
+                img: 'images/movements/Shihoo_nage.png',
+                title: 'Shihoo nage',
+                min: "5"
+            }, {
+                img: 'images/movements/Kote_gaeshi.png',
+                title: 'Kote gaeshi',
+                min: "4"
+            }, {
+                img: 'images/movements/Kaiten_nage.png',
+                title: 'Kaiten nage',
+                min: "4"
+            }, {
+                img: 'images/movements/Tenchi_nage.png',
+                title: 'Tenchi nage',
+                min: "4"
+            }, {
+                img: 'images/movements/Kokyu_hoo.png',
+                title: 'Kokyu hoo',
+                min: "5"
+            }
         ],
         variantes: [
-          {
-              img: 'images/movements/Sokumen_irimi_nage.png',
-              title: 'Sokumen irimi nage',
-              min: "4"
-          },
-          {
-              img: 'images/movements/Ude_kime_nage.png',
-              title: 'Ude kime nage',
-              min: "4"
-          },
-          {
-              img: 'images/movements/Aiki_otoshi.png',
-              title: 'Aiki otoshi',
-              min: "2"
-          },
-          {
-              img: 'images/movements/Sumi_otoshi.png',
-              title: 'Sumi otoshi',
-              min: "2"
-          },
-          {
-              img: 'images/movements/Juji_garami.png',
-              title: 'Juji garami',
-              min: "2"
-          },
-          {
-              img: 'images/movements/Ushiro_kiri_otoshi.png',
-              title: 'Ushiro kiri otoshi',
-              min: "1"
-          },
-          {
-              img: 'images/movements/Kokyu_nage.png',
-              title: 'Kokyu nage',
-              min: "4"
-          },
-          {
-              img: 'images/movements/Koshi_nage.png',
-              title: 'Koshi nage',
-              min: "2"
-          },
+            {
+                img: 'images/movements/Sokumen_irimi_nage.png',
+                title: 'Sokumen irimi',
+                min: "4"
+            }, {
+                img: 'images/movements/Ude_kime_nage.png',
+                title: 'Ude kime nage',
+                min: "4"
+            }, {
+                img: 'images/movements/Aiki_otoshi.png',
+                title: 'Aiki otoshi',
+                min: "2"
+            }, {
+                img: 'images/movements/Sumi_otoshi.png',
+                title: 'Sumi otoshi',
+                min: "2"
+            }, {
+                img: 'images/movements/Juji_garami.png',
+                title: 'Juji garami',
+                min: "2"
+            }, {
+                img: 'images/movements/Ushiro_kiri_otoshi.png',
+                title: 'Ushiro kiri',
+                min: "1"
+            }, {
+                img: 'images/movements/Kokyu_nage.png',
+                title: 'Kokyu nage',
+                min: "4"
+            }, {
+                img: 'images/movements/Koshi_nage.png',
+                title: 'Koshi nage',
+                min: "2"
+            }
         ]
     }
 };
 
-class Movements extends Component {
+class Techniques extends Component {
 
     constructor() {
         super();
@@ -138,16 +131,13 @@ class Movements extends Component {
         if (!this.props.list) {
             grid = <Grid fluid>
                 <Row>
-                    {tilesData[category][subCategory]
-                      .filter(title => Number(title.min) >= Number(this.props.kyu)).map((tile) => (
+                    {techniquesData[category][subCategory].filter(title => Number(title.min) >= Number(this.props.kyu)).map((tile) => (
                         <Col key={tile.img} xs={6} md={3} lg={2}>
                             <Card style={styles.card}>
                                 <CardMedia>
                                     <img src={tile.img}/>
                                 </CardMedia>
-                                <CardActions>
-                                    <FlatButton label={tile.title} labelPosition="after" primary={true}/>
-                                </CardActions>
+                                <CardTitle title={tile.title} titleStyle={styles.title} />
                             </Card>
                         </Col>
                     ))}
@@ -155,8 +145,7 @@ class Movements extends Component {
             </Grid>
         } else {
             grid = <List>
-                {tilesData[category][subCategory]
-                  .filter(title => Number(title.min) >= Number(this.props.kyu)).map((tile) => (
+                {techniquesData[category][subCategory].filter(title => Number(title.min) >= Number(this.props.kyu)).map((tile) => (
                     <ListItem key={tile.img} primaryText={tile.title} insetChildren={true} leftAvatar={< Avatar src = {
                         tile.img
                     } />}/>
@@ -168,8 +157,9 @@ class Movements extends Component {
     }
 
     render() {
+        const styleRoot = (this.props.list ? {textAlign: ''} : {textAlign: 'center'});
         return (
-            <div>
+            <div style={styleRoot}>
                 <h2>Immobilisations</h2>
                 <h3>Base (Osae waza)</h3>
                 {this.renderGrid('immobilisations', 'bases')}
@@ -185,4 +175,4 @@ class Movements extends Component {
     }
 }
 
-export default Movements
+export default Techniques

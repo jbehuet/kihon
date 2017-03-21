@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Header from './common/Header';
-import Movements from './movements/Movements';
+import {Tabs, Tab} from 'material-ui/Tabs';
+import Techniques from './movements/Techniques';
 
 const styles = {
     app: {
@@ -45,13 +46,16 @@ class Main extends Component {
     }
 
     render() {
-        const containerStyle = (this.state.list ? {...styles.container} : {...styles.container, textAlign: 'center'});
         return (
             <div style={styles.app}>
                 <Header onClickChangeView={this.handleChangeDisplay.bind(this)} onChangeKyu={this.handleChangeKyu.bind(this)}></Header>
-                <div style={containerStyle}>
-                    <Movements list={this.state.list} kyu={this.state.kyu}></Movements>
-                </div>
+                  <Tabs style={styles.container}>
+                    <Tab label="Techniques">
+                      <Techniques list={this.state.list} kyu={this.state.kyu}></Techniques>
+                    </Tab>
+                    <Tab label="Attaques">
+                    </Tab>
+                  </Tabs>
             </div>
         );
     }
