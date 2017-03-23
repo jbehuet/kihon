@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import Drawer from 'material-ui/Drawer';
 import Divider from 'material-ui/Divider';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import MenuItem from 'material-ui/MenuItem';
 import {List, ListItem} from 'material-ui/List';
+import { fetchFiltred } from '../../actions/techniquesActions';
 
 const styles = {
     header: {
@@ -28,6 +30,11 @@ const styles = {
     }
 }
 
+@connect((store) => {
+  return {
+    kyu: store.kyu
+  }
+})
 class SideNav extends Component {
 
     constructor() {
@@ -39,7 +46,8 @@ class SideNav extends Component {
     }
 
     handleChangeKyu(event, value){
-      this.props.onChangeKyu(value)
+      this.props.dispatch(fetchFiltred(value))
+      this.props.onChangeKyu()
     }
 
     render() {

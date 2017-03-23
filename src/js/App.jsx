@@ -4,6 +4,7 @@ import style from '../scss/main.scss'; //require style
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import {Route, Router, IndexRoute, hashHistory} from 'react-router';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 // Needed for onTouchTap
@@ -15,7 +16,9 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 //Components
 import Main from './components/Main';
-
+import Movements from './components/movements/Movements';
+//Redux Store
+import store from './store';
 
 const muiTheme = getMuiTheme({
   palette: {
@@ -32,10 +35,13 @@ const muiTheme = getMuiTheme({
 
 ReactDOM.render(
     <MuiThemeProvider muiTheme={muiTheme}>
+    <Provider store={store}>
     <Router history={hashHistory}>
         <Route path="/" component={Main}>
+          <IndexRoute component={Movements}/>
         </Route>
     </Router>
+    </Provider>
 </MuiThemeProvider>, document.getElementById('app'));
 
 
