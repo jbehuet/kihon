@@ -16,6 +16,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 //Components
 import Main from './components/Main';
+import About from './components/About';
 import Movements from './components/movements/Movements';
 //Redux Store
 import store from './store';
@@ -39,6 +40,7 @@ ReactDOM.render(
     <Router history={hashHistory}>
         <Route path="/" component={Main}>
           <IndexRoute component={Movements}/>
+          <Route path="/about" component={About}/>
         </Route>
     </Router>
     </Provider>

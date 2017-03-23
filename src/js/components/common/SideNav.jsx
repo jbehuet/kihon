@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import Drawer from 'material-ui/Drawer';
 import Divider from 'material-ui/Divider';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
@@ -27,6 +28,9 @@ const styles = {
     },
     button: {
         margin: '16px 16px'
+    },
+    link:{
+      display: 'block'
     }
 }
 
@@ -37,7 +41,7 @@ const styles = {
 })
 class SideNav extends Component {
 
-    constructor() {
+    constructor(props) {
         super();
     }
 
@@ -55,7 +59,7 @@ class SideNav extends Component {
             <Drawer docked={false} width={200} open={this.props.open} onRequestChange={this.handleRequestChange.bind(this)}>
 
                 <MenuItem style={styles.header} disabled={true}>Aikido - 合気道</MenuItem>
-                <MenuItem onTouchTap={this.handleRequestChange.bind(this)}>Accueil</MenuItem>
+                <MenuItem onTouchTap={this.handleRequestChange.bind(this)}><Link to="/" style={styles.link}>Accueil</Link></MenuItem>
                 <Divider/>
                 <List>
                   <ListItem
@@ -75,7 +79,7 @@ class SideNav extends Component {
                   />
                 </List>
                 <Divider/>
-                <MenuItem>A propos</MenuItem>
+                <MenuItem onTouchTap={this.handleRequestChange.bind(this)}><Link to="/about" style={styles.link}>A propos</Link></MenuItem>
                 <div style={styles.footer}>© 2017 - Images propriétées de la FFAAA</div>
 
             </Drawer>
