@@ -34,11 +34,12 @@ class Main extends Component {
     handleChangeKyu(kyu) {
         this.setState({open: false});
     }
+
     render() {
         return (
             <div style={styles.app}>
                 <Header onClickChangeView={this.handleChangeDisplay.bind(this)} onChangeKyu={this.handleChangeKyu.bind(this)}></Header>
-                {this.props.children}
+                {React.cloneElement(this.props.children, {list: this.state.list})}
             </div>
         );
     }

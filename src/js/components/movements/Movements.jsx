@@ -16,22 +16,13 @@ class Movements extends Component {
 
     constructor() {
         super();
-        this.state = {
-            list: false
-        };
-    }
-
-    handleChangeDisplay(event) {
-        this.setState({
-            list: !this.state.list
-        });
     }
 
     render() {
         return (
           <Tabs style={styles.container}>
             <Tab label="Techniques">
-              <Techniques list={this.state.list}></Techniques>
+              <Techniques list={this.props.list}></Techniques>
             </Tab>
             <Tab label="Attaques">
             </Tab>
