@@ -21,7 +21,7 @@ class About extends Component {
         return (
             <div style={styles.container}>
               <h2 style={styles.title}>A propos</h2>
-              <p>Cette application a été développée dans le cadre de l'autoformation.</p>
+              <p>Cette application a été développée en ayant comme objectif de facilité l'apprentissage des différents termes issues des techniques de l'aikido.</p>
               <h2 style={styles.title}>Propriété intellectuelle</h2>
               <p>Cette application est sous licence MIT.</p>
               <p>Les images et dessins intégrées dans cette application sont la propriété de la <a href="http://www.aikido.com.fr/">FFAAA</a> ou de tiers ayant autorisé la FFAAA à les utiliser.</p>

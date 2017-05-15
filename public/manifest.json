@@ -16,9 +16,16 @@
       "src": "images/ki-kanji-144x144.png",
       "sizes": "144x144",
       "type": "image/png"
+    },
+    {
+      "src": "images/ki-kanji-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
     }
   ],
   "start_url": "./",
   "display": "standalone",
-  "orientation": "portrait-primary"
+  "orientation": "portrait-primary",
+  "background_color": "#FFFFFF",
+  "theme_color": "#AB232F"
 }
