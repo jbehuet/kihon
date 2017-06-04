@@ -22,9 +22,10 @@ class Movements extends Component {
         return (
           <Tabs style={styles.container}>
             <Tab label="Techniques">
-              <Techniques list={this.props.list}></Techniques>
+              <Techniques list={this.props.list} isTechniques="true"></Techniques>
             </Tab>
             <Tab label="Attaques">
+              <Techniques list={this.props.list}></Techniques>
             </Tab>
           </Tabs>
         );

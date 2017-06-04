@@ -90,6 +90,103 @@ const defaultsTechniques = {
       title: 'Koshi nage',
       min: "2"
     }]
+  },
+  saisies: {
+    faces: [{
+        img: 'images/movements/Ai_hanmi_katate_dori.png',
+        title: 'Aï hanmi katate dori',
+        min: "5"
+      },
+      {
+        img: 'images/movements/Katate_dori.png',
+        title: 'Katate dori',
+        min: "5"
+      },
+      {
+        img: 'images/movements/Ryote_dori.png',
+        title: 'Ryote dori',
+        min: "5"
+      },
+      {
+        img: 'images/movements/Katate_ryote_dori.png',
+        title: 'Katate ryote dori',
+        min: "5"
+      },
+      {
+        img: 'images/movements/Kata_dori.png',
+        title: 'Kata dori',
+        min: "5"
+      },
+      {
+        img: 'images/movements/Kata_dori_men_uchi.png',
+        title: 'Kata dori men uchi',
+        min: "5"
+      },
+      {
+        img: 'images/movements/Ryokata_dori.png',
+        title: 'Ryokata dori',
+        min: "5"
+      },
+      {
+        img: 'images/movements/Muna_dori.png',
+        title: 'Muna dori',
+        min: "5"
+      }
+    ],
+    arrieres: [{
+        img: 'images/movements/Ushiro_ryote_dori.png',
+        title: 'Ushiro ryote dori',
+        min: "5"
+      },
+      {
+        img: 'images/movements/Ushiro_ryo_hiji_dori.png',
+        title: 'Ushiro ryo hiji dori',
+        min: "5"
+      },
+      {
+        img: 'images/movements/Ushiro_ryo_kata_dori.png',
+        title: 'Ushiro ryo kata dori',
+        min: "5"
+      },
+      {
+        img: 'images/movements/Ushiro_eri_dori.png',
+        title: 'Ushiro eri dori',
+        min: "5"
+      },
+      {
+        img: 'images/movements/Ushiro_katate_dori_kubi_shime.png',
+        title: 'Ushiro katate dori kubi shime',
+        min: "5"
+      }
+    ]
+  },
+  frappes: {
+    bases: [{
+        img: 'images/movements/Sho_men_uchi.png',
+        title: 'Sho men uchi',
+        min: "5"
+      },
+      {
+        img: 'images/movements/Yoko_men_uchi.png',
+        title: 'Yoko men uchi',
+        min: "5"
+      },
+      {
+        img: 'images/movements/Chudan_tsuki.png',
+        title: 'Chudan tsuki',
+        min: "5"
+      },
+      {
+        img: 'images/movements/Jodan_tsuki.png',
+        title: 'Jodan tsuki',
+        min: "5"
+      },
+      {
+        img: 'images/movements/Mae_geri.png',
+        title: 'Mae geri',
+        min: "5"
+      }
+    ]
   }
 };
 
@@ -109,7 +206,7 @@ const techniquesReducer = function(state, action) {
         }
       }
     case 'FETCH_ALL':
-    return state;
+      return state;
     default:
       return state;
   }
