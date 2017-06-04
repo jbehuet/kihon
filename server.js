@@ -33,11 +33,10 @@ if (process.env.NODE_ENV !== 'production') {
   };
 
   const publicPath = express.static(path.join(__dirname, 'public'))
-
   const port = (process.env.PORT || 3000)
 
-  app.use('/', publicPath)
   app.use(HTTPS);
+  app.use('/', publicPath)
 
   app.listen(port)
   console.log(`Listening at http://localhost:${port}`)
