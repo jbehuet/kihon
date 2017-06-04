@@ -20,6 +20,7 @@ cp -r public/* dist/
 
 # Adding new files
 cd dist/
+sed -i.bak -e "s/https:\/\/aikido-learn.herokuapp.com\/#/https:\/\/jbehuet.github.io\/aikido/" index.html
 git add .
 git commit -m "Auto-deploy"
 
