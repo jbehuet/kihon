@@ -203,6 +203,13 @@ const techniquesReducer = function(state, action) {
         projections: {
           bases: defaultsTechniques.projections.bases.filter(el => Number(el.min) >= Number(action.kyu)),
           variantes: defaultsTechniques.projections.variantes.filter(el => Number(el.min) >= Number(action.kyu))
+        },
+        saisies: {
+          faces: defaultsTechniques.saisies.faces.filter(el => Number(el.min) >= Number(action.kyu)),
+          arrieres: defaultsTechniques.saisies.arrieres.filter(el => Number(el.min) >= Number(action.kyu))
+        },
+        frappes: {
+          bases: defaultsTechniques.frappes.bases.filter(el => Number(el.min) >= Number(action.kyu))
         }
       }
     case 'FETCH_ALL':
