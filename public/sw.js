@@ -1,5 +1,3 @@
-'use strict';
-
 var cacheName = 'aikidoData-v1';
 var filesToCache = [
   '/',
