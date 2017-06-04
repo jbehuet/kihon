@@ -23,14 +23,11 @@ if (process.env.NODE_ENV !== 'production') {
 
 } else {
   const app = express()
-  const indexPath = path.join(__dirname, 'public/index.html')
   const publicPath = express.static(path.join(__dirname, 'public'))
+
   const port = (process.env.PORT || 3000)
 
-  app.use('/public', publicPath)
-  app.get('/', function(_, res) {
-    res.sendFile(indexPath)
-  })
+  app.use('/', publicPath)
 
   app.listen(port)
   console.log(`Listening at http://localhost:${port}`)
