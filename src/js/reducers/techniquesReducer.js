@@ -93,8 +93,9 @@ const defaultsTechniques = {
   }
 };
 
-const techniquesReducer = function(state = defaultsTechniques, action) {
+const techniquesReducer = function(state, action) {
   'use strict';
+  state = state || defaultsTechniques;
   switch (action.type) {
     case 'FETCH_FILTRED':
       return {
