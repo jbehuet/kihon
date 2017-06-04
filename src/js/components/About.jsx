@@ -24,8 +24,7 @@ class About extends Component {
               <p>Cette application a été développée en ayant comme objectif de facilité l'apprentissage des différents termes issues des techniques de l'aikido.</p>
               <h2 style={styles.title}>Propriété intellectuelle</h2>
               <p>Cette application est sous licence MIT.</p>
-              <p>Les images et dessins intégrées dans cette application sont la propriété de la <a href="http://www.aikido.com.fr/">FFAAA</a> ou de tiers ayant autorisé la FFAAA à les utiliser.</p>
-              <p>Tous les images sont la propriété de la FFAAA et ne sauraient être reproduits librement sans demande préalable à la FFAAA et sans l’indication de la source. Il est possible de demander une autorisation de reproduction uniquement à des fins personnelles, associatives ou professionnelles, mais en aucun cas ne peut faire l’objet d’exploitation commerciale ou publicitaire.</p>
+              <p>Les images et dessins des techniques intégrées dans cette application sont la propriété de la <a href="http://www.aikido.com.fr/">FFAAA</a> et ne sauraient être reproduits librement sans demande préalable à la FFAAA et sans l’indication de la source. Il est possible de demander une autorisation de reproduction uniquement à des fins personnelles, associatives ou professionnelles, mais en aucun cas ne peut faire l’objet d’exploitation commerciale ou publicitaire.</p>
               <h2 style={styles.title}>Développement</h2>
               <p>Par <a href="http://jbehuet.fr">Jérôme BEHUET</a></p>
               <br/>
