@@ -23,11 +23,21 @@ if (process.env.NODE_ENV !== 'production') {
 
 } else {
   const app = express()
+
+  const HTTPS = function(req, res, next) {
+    if (req.headers['x-forwarded-proto'] !== 'https') {
+      return res.redirect('https://' + req.headers.host + req.url);
+    } else {
+      return next();
+    }
+  };
+
   const publicPath = express.static(path.join(__dirname, 'public'))
 
   const port = (process.env.PORT || 3000)
 
   app.use('/', publicPath)
+  app.use(HTTPS);
 
   app.listen(port)
   console.log(`Listening at http://localhost:${port}`)
