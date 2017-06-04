@@ -1,6 +1,8 @@
 {
   "globals"   : {
-    "window"     : false
+    "window": false,
+    "self": false,
+    "caches": false
   },
   "camelcase": true,
   "curly": false,
