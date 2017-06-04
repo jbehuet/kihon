@@ -6,7 +6,7 @@
     "build": "webpack --env production",
     "dev": "node server"
   },
-  "author":"Jérôme BEHUET<jbehuet@gmail.com>",
+  "author": "Jérôme BEHUET<jbehuet@gmail.com>",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
