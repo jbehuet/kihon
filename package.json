@@ -2,9 +2,10 @@
   "name": "Aikido",
   "version": "1.0.0",
   "scripts": {
-    "start": "",
+    "start": "node server",
     "build": "webpack --env production",
-    "dev": "node server"
+    "dev": "node server",
+    "postinstall": "webpack --env production"
   },
   "author": "Jérôme BEHUET<jbehuet@gmail.com>",
   "license": "MIT",
@@ -17,6 +18,7 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
     "css-loader": "^0.26.1",
+    "express": "^4.15.3",
     "extract-text-webpack-plugin": "^2.0.0-rc.3",
     "html-webpack-plugin": "^2.28.0",
     "material-ui": "^0.17.0",

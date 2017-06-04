@@ -1,3 +1,5 @@
+'use strict';
+
 var cacheName = 'aikidoData-v1';
 var filesToCache = [
   '/',
@@ -51,8 +53,6 @@ var filesToCache = [
   '/images/movements/Ushiro_ryote_dori.png',
   '/images/movements/Yoko_men_uchi.png',
   '/images/movements/Yonkyo.png'
-
-
 ];
 
 // Install Service Worker
