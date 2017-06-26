@@ -115,76 +115,76 @@ const defaultsTechniques = {
       {
         img: 'images/movements/Kata_dori.png',
         title: 'Kata dori',
-        min: "5"
+        min: "4"
       },
       {
         img: 'images/movements/Kata_dori_men_uchi.png',
         title: 'Kata dori men uchi',
-        min: "5"
+        min: "2"
       },
       {
         img: 'images/movements/Ryokata_dori.png',
         title: 'Ryokata dori',
-        min: "5"
+        min: "2"
       },
       {
         img: 'images/movements/Muna_dori.png',
         title: 'Muna dori',
-        min: "5"
+        min: "1"
       }
     ],
     arrieres: [{
         img: 'images/movements/Ushiro_ryote_dori.png',
         title: 'Ushiro ryote dori',
-        min: "5"
+        min: "4"
       },
       {
         img: 'images/movements/Ushiro_ryo_hiji_dori.png',
         title: 'Ushiro ryo hiji dori',
-        min: "5"
+        min: "2"
       },
       {
         img: 'images/movements/Ushiro_ryo_kata_dori.png',
         title: 'Ushiro ryo kata dori',
-        min: "5"
+        min: "2"
       },
       {
         img: 'images/movements/Ushiro_eri_dori.png',
         title: 'Ushiro eri dori',
-        min: "5"
+        min: "2"
       },
       {
         img: 'images/movements/Ushiro_katate_dori_kubi_shime.png',
         title: 'Ushiro katate dori kubi shime',
-        min: "5"
+        min: "2"
       }
     ]
   },
   frappes: {
     bases: [{
         img: 'images/movements/Sho_men_uchi.png',
-        title: 'Sho men uchi',
+        title: 'Shomen uchi',
         min: "5"
       },
       {
         img: 'images/movements/Yoko_men_uchi.png',
         title: 'Yoko men uchi',
-        min: "5"
+        min: "4"
       },
       {
         img: 'images/movements/Chudan_tsuki.png',
         title: 'Chudan tsuki',
-        min: "5"
+        min: "1"
       },
       {
         img: 'images/movements/Jodan_tsuki.png',
         title: 'Jodan tsuki',
-        min: "5"
+        min: "2"
       },
       {
         img: 'images/movements/Mae_geri.png',
         title: 'Mae geri',
-        min: "5"
+        min: "1"
       }
     ]
   }

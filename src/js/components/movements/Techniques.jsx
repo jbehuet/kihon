@@ -5,6 +5,7 @@ import {Card, CardActions, CardMedia, CardTitle} from 'material-ui/Card';
 import {List, ListItem} from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
 import FlatButton from 'material-ui/FlatButton';
+import LazyLoad from 'react-lazyload';
 
 const styles = {
   card: {
@@ -33,12 +34,14 @@ class Techniques extends Component {
     if (!this.props.list) {
       grid = <Grid fluid>
         <Row>
-          {this.props.techniques[category][subCategory].map((tile) => (
-            <Col key={tile.img} xs={6} md={3} lg={2}>
+          {this.props.techniques[category][subCategory].map((tile, i) => (
+            <Col key={i} xs={6} md={3} lg={2}>
               <Card style={styles.card}>
-                <CardMedia>
-                  <img src={tile.img}/>
-                </CardMedia>
+                <LazyLoad height={200} offset={100}>
+                  <CardMedia>
+                    <img src={tile.img}/>
+                  </CardMedia>
+                </LazyLoad>
                 <CardTitle title={tile.title} titleStyle={styles.title}/>
               </Card>
             </Col>
@@ -47,10 +50,10 @@ class Techniques extends Component {
       </Grid>
     } else {
       grid = <List>
-        {this.props.techniques[category][subCategory].map((tile) => (
-          <ListItem key={tile.img} primaryText={tile.title} insetChildren={true} leftAvatar={< Avatar src = {
-            tile.img
-          } />}/>
+        {this.props.techniques[category][subCategory].map((tile, i) => (
+          <LazyLoad key={i} height={50} offset={100}>
+          <ListItem primaryText={tile.title} insetChildren={true} leftAvatar= { < Avatar src = { tile.img } /> }/>
+          </LazyLoad>
         ))}
       </List>
     }
@@ -83,7 +86,8 @@ class Techniques extends Component {
   }
 
   renderAttacks() {
-    const styleRoot = (this.props.list ? {
+    const styleRoot = (this.props.list
+      ? {
         textAlign: ''
       }
       : {

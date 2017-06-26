@@ -13,6 +13,7 @@ var filesToCache = [
   'images/belts/4e_kyu.png',
   'images/belts/5e_kyu.png',
   'images/belts/6e_kyu.png',
+  'images/belts/none.png',
   'images/movements/Ai_hanmi_katate_dori.png',
   'images/movements/Aiki_otoshi.png',
   'images/movements/Chudan_tsuki.png',

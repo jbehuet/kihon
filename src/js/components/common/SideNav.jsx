@@ -68,12 +68,12 @@ class SideNav extends Component {
                     primaryTogglesNestedList={true}
                     nestedItems={[
                       <RadioButtonGroup key={1} name="belts" defaultSelected="0" onChange={this.handleChangeKyu.bind(this)} style={styles.radio}>
-                          <RadioButton value="5" label="5e Kyu" checkedIcon={< img src = 'images/belts/5e_kyu.png' width = "24" />} uncheckedIcon={< img src = 'images/belts/6e_kyu.png' width = "24" />}/>
-                          <RadioButton value="4" label="4e Kyu" checkedIcon={< img src = 'images/belts/4e_kyu.png' width = "24" />} uncheckedIcon={< img src = 'images/belts/6e_kyu.png' width = "24" />}/>
-                          <RadioButton value="3" label="3e Kyu" checkedIcon={< img src = 'images/belts/3e_kyu.png' width = "24" />} uncheckedIcon={< img src = 'images/belts/6e_kyu.png' width = "24" />}/>
-                          <RadioButton value="2" label="2e Kyu" checkedIcon={< img src = 'images/belts/2e_kyu.png' width = "24" />} uncheckedIcon={< img src = 'images/belts/6e_kyu.png' width = "24" />}/>
-                          <RadioButton value="1" label="1e Kyu" checkedIcon={< img src = 'images/belts/1e_kyu.png' width = "24" />} uncheckedIcon={< img src = 'images/belts/6e_kyu.png' width = "24" />}/>
-                          <RadioButton value="0" label="1e Dan (Tout)" checkedIcon={< img src = 'images/belts/1e_dan.png' width = "24" />} uncheckedIcon={< img src = 'images/belts/6e_kyu.png' width = "24" />}/>
+                          <RadioButton value="5" label="5e Kyu" checkedIcon={< img src = 'images/belts/5e_kyu.png' width = "24" />} uncheckedIcon={< img src = 'images/belts/none.png' width = "24" />}/>
+                          <RadioButton value="4" label="4e Kyu" checkedIcon={< img src = 'images/belts/4e_kyu.png' width = "24" />} uncheckedIcon={< img src = 'images/belts/none.png' width = "24" />}/>
+                          <RadioButton value="3" label="3e Kyu" checkedIcon={< img src = 'images/belts/3e_kyu.png' width = "24" />} uncheckedIcon={< img src = 'images/belts/none.png' width = "24" />}/>
+                          <RadioButton value="2" label="2e Kyu" checkedIcon={< img src = 'images/belts/2e_kyu.png' width = "24" />} uncheckedIcon={< img src = 'images/belts/none.png' width = "24" />}/>
+                          <RadioButton value="1" label="1e Kyu" checkedIcon={< img src = 'images/belts/6e_kyu.png' width = "24" />} uncheckedIcon={< img src = 'images/belts/none.png' width = "24" />}/>
+                          <RadioButton value="0" label="1e Dan (Tout)" checkedIcon={< img src = 'images/belts/1e_dan.png' width = "24" />} uncheckedIcon={< img src = 'images/belts/none.png' width = "24" />}/>
                       </RadioButtonGroup>
                     ]}
                   />

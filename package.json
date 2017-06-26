@@ -9,7 +9,9 @@
   },
   "author": "Jérôme BEHUET<jbehuet@gmail.com>",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "react-lazyload": "^2.2.7"
+  },
   "devDependencies": {
     "babel-core": "^6.5.1",
     "babel-loader": "^6.2.2",
