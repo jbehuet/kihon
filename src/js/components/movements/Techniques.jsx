@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
-import {Grid, Row, Col} from 'react-flexbox-grid';
-import {connect} from 'react-redux';
-import {Card, CardActions, CardMedia, CardTitle} from 'material-ui/Card';
-import {List, ListItem} from 'material-ui/List';
+import React, { Component } from 'react';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+import { connect } from 'react-redux';
+import { Card, CardActions, CardMedia, CardTitle } from 'material-ui/Card';
+import { List, ListItem } from 'material-ui/List';
+import { Link } from 'react-router'
 import Avatar from 'material-ui/Avatar';
 import FlatButton from 'material-ui/FlatButton';
 import LazyLoad from 'react-lazyload';
@@ -20,7 +21,7 @@ const styles = {
 };
 
 @connect((store) => {
-  return {techniques: store.techniques}
+  return { techniques: store.techniques }
 })
 class Techniques extends Component {
 
@@ -36,14 +37,14 @@ class Techniques extends Component {
         <Row>
           {this.props.techniques[category][subCategory].map((tile, i) => (
             <Col key={i} xs={6} md={3} lg={2}>
-              <Card style={styles.card}>
-                <LazyLoad height={200} offset={100}>
+              <Link to={`/${category}/${subCategory}/${tile.id}`}>
+                <Card style={styles.card} >
                   <CardMedia>
-                    <img src={tile.img}/>
+                    <img src={tile.img} />
                   </CardMedia>
-                </LazyLoad>
-                <CardTitle title={tile.title} titleStyle={styles.title}/>
-              </Card>
+                  <CardTitle title={tile.title} titleStyle={styles.title} />
+                </Card>
+              </Link>
             </Col>
           ))}
         </Row>
@@ -51,9 +52,9 @@ class Techniques extends Component {
     } else {
       grid = <List>
         {this.props.techniques[category][subCategory].map((tile, i) => (
-          <LazyLoad key={i} height={50} offset={100}>
-          <ListItem primaryText={tile.title} insetChildren={true} leftAvatar= { < Avatar src = { tile.img } /> }/>
-          </LazyLoad>
+          <Link key={i} to={`/${category}/${subCategory}/${tile.id}`}>
+            <ListItem primaryText={tile.title} insetChildren={true} leftAvatar={< Avatar src={tile.img} />} />
+          </Link>
         ))}
       </List>
     }
@@ -110,7 +111,7 @@ class Techniques extends Component {
       return this.renderTechniques();
     else
       return this.renderAttacks();
-    }
   }
+}
 
 export default Techniques
