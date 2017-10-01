@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { browserHistory } from 'react-router'
 import AppBar from 'material-ui/AppBar';
 import SideNav from './SideNav';
 import IconButton from 'material-ui/IconButton';
@@ -14,8 +15,8 @@ const styles = {
 
 class Header extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             open: false,
             list: false

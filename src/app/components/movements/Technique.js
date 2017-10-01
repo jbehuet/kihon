@@ -31,7 +31,6 @@ const styles = {
 @connect((store) => {
     return { techniques: store.techniques }
 })
-
 class Technique extends Component {
 
     constructor() {
@@ -39,15 +38,11 @@ class Technique extends Component {
     }
 
     render() {
-        const category = this.props.params.category;
-        const subCategory = this.props.params.subcategory;
-        const id = this.props.params.id;
-
+        const {category, subcategory, id  } = this.props.params;
         let technique;
-
         if (this.props.techniques[category])
-            if (this.props.techniques[category][subCategory])
-                technique = this.props.techniques[category][subCategory][id];
+            if (this.props.techniques[category][subcategory])
+                technique = this.props.techniques[category][subcategory][id];
 
         if (technique) {
             return (
@@ -65,7 +60,7 @@ class Technique extends Component {
                                 <LazyLoad height={200} offset={100}>
                                     <CardHeader
                                         title={technique.title}
-                                        subtitle={`${category}/${subCategory}`}
+                                        subtitle={`${category}/${subcategory}`}
                                         avatar={technique.img}
                                     />
                                 </LazyLoad>

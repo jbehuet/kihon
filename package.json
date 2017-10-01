@@ -9,9 +9,7 @@
   },
   "author": "Jérôme BEHUET<jbehuet@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-    "react-lazyload": "^2.2.7"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.5.1",
     "babel-loader": "^6.2.2",
@@ -29,6 +27,7 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-flexbox-grid": "^1.0.1",
+    "react-lazyload": "^2.2.7",
     "react-redux": "^5.0.3",
     "react-router": "^3.0.2",
     "react-tap-event-plugin": "^2.0.1",
