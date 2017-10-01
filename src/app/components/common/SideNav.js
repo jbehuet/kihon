@@ -47,7 +47,6 @@ class SideNav extends Component {
     }
 
     handleChangeKyu(event, value) {
-        console.log(this.props)
         this.props.router.push('/')
         this.props.dispatch(Actions.fetchFiltred(value))
         this.props.onChangeKyu()
