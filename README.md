@@ -14,7 +14,7 @@ npm i
 
 #### Development
 
-`npm run dev`
+`npm start`
 
 #### Build
 

@@ -1,6 +1,8 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 try {
   require('os').networkInterfaces()
@@ -10,18 +12,12 @@ try {
 
 module.exports = {
   entry: [
-    'react-hot-loader/patch',
-    'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
     './src/app/App.js',
   ],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
     publicPath: '/'
-  },
-  devServer: {
-    port: 8080,
-    host: '0.0.0.0',
   },
   module: {
     loaders: [
@@ -63,10 +59,12 @@ module.exports = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin('dist/'),
     new HtmlWebpackPlugin({
       inject: true,
       template: 'src/static/index.html'
     }),
+    new CopyWebpackPlugin([{ from: 'src/static/' }], { ignore: ['index.html'] }),
     new webpack.NoEmitOnErrorsPlugin()
   ]
 };

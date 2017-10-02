@@ -9,6 +9,10 @@ import { Link } from 'react-router'
 import Avatar from 'material-ui/Avatar';
 import FlatButton from 'material-ui/FlatButton';
 import LazyLoad from 'react-lazyload';
+import Swipeable from 'react-swipeable';
+
+const RIGHT = '-1';
+const LEFT = '+1';
 
 const styles = {
     container: {
@@ -25,7 +29,7 @@ const styles = {
     },
     close: {
         position: 'absolute'
-    }
+    },
 };
 
 @connect((store) => {
@@ -33,42 +37,76 @@ const styles = {
 })
 class Technique extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        const { id } = this.props.params;
+        this.state = { index: Number(id) };
+    }
+
+    onSwiped(direction) {
+        const { category, subcategory } = this.props.params;
+        const change = direction === RIGHT ? RIGHT : LEFT;
+        const adjustedIdx = this.state.index + Number(change);
+        let newIdx;
+        if (adjustedIdx >= this.props.techniques[category][subcategory].length) {
+            newIdx = 0;
+        } else if (adjustedIdx < 0) {
+            newIdx = this.props.techniques[category][subcategory].length - 1
+        } else {
+            newIdx = adjustedIdx;
+        }
+        this.setState({ index: newIdx });
     }
 
     render() {
         const { category, subcategory, id } = this.props.params;
-        let technique;
-        if (this.props.techniques[category])
-            if (this.props.techniques[category][subcategory])
-                technique = this.props.techniques[category][subcategory][id];
+        const { index = 0 } = this.state;
+        const techniques = this.props.techniques[category][subcategory];
+        let technique = techniques[index];
 
         if (technique) {
             return (
                 <div style={styles.container}>
-                    <Row>
-                        <Col key={technique.id} xs={12}>
-                            <Card style={styles.card}>
-                                <Row end="xs">
-                                    <Col xs={12} style={styles.close}>
-                                        <Link to='/'>
-                                            <IconButton><HighlightOff /></IconButton>
-                                        </Link>
-                                    </Col>
-                                </Row>
-                                <LazyLoad height={200} offset={100}>
-                                    <CardHeader
-                                        title={technique.title}
-                                        subtitle={`${category}/${subcategory}`}
-                                        avatar={technique.img}
-                                    />
-                                </LazyLoad>
-                                <CardText dangerouslySetInnerHTML={{__html: technique.description}}>
-                                </CardText>
-                            </Card>
-                        </Col>
-                    </Row>
+                    <Swipeable
+                        className="swipe"
+                        trackMouse
+                        style={{ touchAction: 'none' }}
+                        preventDefaultTouchmoveEvent
+                        onSwipedLeft={() => this.onSwiped(LEFT)}
+                        onSwipedRight={() => this.onSwiped(RIGHT)}>
+                        <Row>
+                            <Col key={technique.id} xs={12}>
+                                <Card style={styles.card}>
+                                    <Row end="xs">
+                                        <Col xs={12} style={styles.close}>
+                                            <Link to='/'>
+                                                <IconButton><HighlightOff /></IconButton>
+                                            </Link>
+                                        </Col>
+                                    </Row>
+                                    <LazyLoad height={200} offset={100}>
+                                        <CardHeader
+                                            title={technique.title}
+                                            subtitle={`${category}/${subcategory}`}
+                                            avatar={technique.img}
+                                        />
+                                    </LazyLoad>
+                                    <CardText dangerouslySetInnerHTML={{ __html: technique.description }}>
+                                    </CardText>
+                                    <CardActions>
+                                        <Row className='no-margin'>
+                                            <Col xs={6}>
+                                                <FlatButton label="<" onClick={() => this.onSwiped(RIGHT)} />
+                                            </Col>
+                                            <Col xs={6}>
+                                                <FlatButton className="float-right" label=">" onClick={() => this.onSwiped(LEFT)} />
+                                            </Col>
+                                        </Row>
+                                    </CardActions>
+                                </Card>
+                            </Col>
+                        </Row>
+                    </Swipeable>
                 </div>
             )
         } else {

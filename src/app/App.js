@@ -5,7 +5,7 @@ import style from '../scss/main.scss'; //require style
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import {Route, Router, IndexRoute, hashHistory} from 'react-router';
+import { Route, Router, IndexRoute, hashHistory } from 'react-router';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -19,6 +19,7 @@ import Main from './components/Main';
 import About from './components/About';
 import Movements from './components/movements/Movements';
 import Technique from './components/movements/Technique';
+
 //Redux Store
 import store from './store';
 
@@ -36,21 +37,21 @@ const muiTheme = getMuiTheme({
 });
 
 ReactDOM.render(
-    <MuiThemeProvider muiTheme={muiTheme}>
+  <MuiThemeProvider muiTheme={muiTheme}>
     <Provider store={store}>
-    <Router history={hashHistory}>
+      <Router history={hashHistory}>
         <Route path="/" component={Main}>
-          <IndexRoute component={Movements}/>
-          <Route path="/:category/:subcategory/:id" component={Technique}/>
-          <Route path="/about" component={About}/>
+          <IndexRoute component={Movements} />
+          <Route path="/:category/:subcategory/:id" component={Technique} />
+          <Route path="/about" component={About} />
         </Route>
-    </Router>
+      </Router>
     </Provider>
-</MuiThemeProvider>, document.getElementById('app'));
+  </MuiThemeProvider>, document.getElementById('app'));
 
 
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-             .register('sw.js')
-             .then(function() { console.log('Service Worker Registered'); });
-  }
+  navigator.serviceWorker
+    .register('sw.js')
+    .then(function () { console.log('Service Worker Registered'); });
+}

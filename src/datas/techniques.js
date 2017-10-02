@@ -4,7 +4,7 @@ const techniques = {
         id: '0',
         img: 'images/movements/Ikkyo.png',
         description:'<h3>一教</h3>\
-        <p>Fait parti des cinq principes fondamentaux des techniques en Aïkido qui est déclinés selon la posture et l\'attaque.</p>\
+        <p>Fait parti des cinq principes fondamentaux des techniques en Aïkido qui est déclinée selon la posture et l\'attaque.</p>\
         <p><strong>Objectif</strong> : Contrôle du coude</p>\
         <p>Amener le uke au sol en contrôlant le coude.</p>',
         title: 'Ikkyo',
@@ -13,7 +13,7 @@ const techniques = {
         id: '1',
         img: 'images/movements/Nikyo.png',
         description:'<h3>二教</h3>\
-        <p>Fait parti des cinq principes fondamentaux des techniques en Aïkido qui est déclinés selon la posture et l\'attaque.</p>\
+        <p>Fait parti des cinq principes fondamentaux des techniques en Aïkido qui est déclinée selon la posture et l\'attaque.</p>\
         <p><strong>Objectif</strong> : Contrôle du coude et du poignet</p>\
         <p>Amener le uke au sol en contrôlant le coude et à l\'aide d\'une torsion appliquée au poignet.</p>',
         title: 'Nikyo',
@@ -22,7 +22,7 @@ const techniques = {
         id: '2',
         img: 'images/movements/Sankyo.png',
         description:'<h3>三教</h3>\
-        <p>Fait parti des cinq principes fondamentaux des techniques en Aïkido qui est déclinés selon la posture et l\'attaque.</p>\
+        <p>Fait parti des cinq principes fondamentaux des techniques en Aïkido qui est déclinée selon la posture et l\'attaque.</p>\
         <p><strong>Objectif</strong> : Contrôle du coude, du poignet et de l\'épaule</p>\
         <p>Amener le uke au sol à l\'aide d\'une torsion appliquée au poignet et la torsion anti-horaire de sa main.</p>',
         title: 'Sankyo',
@@ -31,7 +31,7 @@ const techniques = {
         id: '3',
         img: 'images/movements/Yonkyo.png',
         description:'<h3>四教</h3>\
-        <p>Fait parti des cinq principes fondamentaux des techniques en Aïkido qui est déclinés selon la posture et l\'attaque.</p>\
+        <p>Fait parti des cinq principes fondamentaux des techniques en Aïkido qui est déclinée selon la posture et l\'attaque.</p>\
         <p><strong>Objectif</strong> : Contrôle de l\'avant bras</p>\
         <p>Amener le uke au sol à l\'aide d\'une torsion à l\'avant bras et d\'une pression (forte) au niveau du nerf radial.</p>',
         title: 'Yonkyo',
@@ -40,7 +40,7 @@ const techniques = {
         id: '4',
         img: 'images/movements/Gokyo.png',
         description:'<h3>五教</h3>\
-        <p>Fait parti des cinq principes fondamentaux des techniques en Aïkido qui est déclinés selon la posture et l\'attaque.</p>\
+        <p>Fait parti des cinq principes fondamentaux des techniques en Aïkido qui est déclinée selon la posture et l\'attaque.</p>\
         <p><strong>Objectif</strong> : Contrôler une attaque au couteau</p>\
         <p>Proche <a class=\'inversed\' href=\'#/immobilisations/bases/0\'>d\'Ikkyo</a>, l\'objectif est d\'amener le uke au sol en contrôlant le coude mais avec un contrôle du poignet différent (avant bras bloqué par la main retournée, paume vers le haut).</p>',
         title: 'Gokyo',
