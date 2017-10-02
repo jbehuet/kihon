@@ -20,16 +20,12 @@ cp -r public/* dist/
 
 # Adding new files
 cd dist/
-sed -i.bak -e "s/https:\/\/aikido-learn.herokuapp.com\/#/https:\/\/jbehuet.github.io\/aikido/" index.html
 git add .
 git commit -m "Auto-deploy"
 
 # Pushing to deploy branch
-git push origin master
+git push origin master $1
 
 # Cleaning
 cd ..
 rm -rf dist
-rm public/bundle.js
-rm -r public/css/
-git checkout public/index.html
