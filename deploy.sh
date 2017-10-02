@@ -23,14 +23,13 @@ npm run build
 
 # Adding new files
 echo -e "* Add / Commit ${Gre}(2/4)${RCol}"
-git add dist/ --force
+git add dist --force
 git commit -m "Auto-deploy"
 
 # Pushing to deploy branch
-echo '* Push ${Gre}(3/4)${RCol}'
-#git subtree push --prefix dist origin master
+echo -e "* Push ${Gre}(3/4)${RCol}"
+git subtree push --prefix dist origin master
 
-git push origin `git subtree split --prefix dist master`:master --force
 #git push origin `git subtree split --prefix dist master`:master --force
 
 # Cleaning

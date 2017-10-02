@@ -41,21 +41,27 @@ const techniques = {
         img: 'images/movements/Gokyo.png',
         description:'<h3>五教</h3>\
         <p>Fait parti des cinq principes fondamentaux des techniques en Aïkido qui est déclinée selon la posture et l\'attaque.</p>\
-        <p><strong>Objectif</strong> : Contrôler une attaque au couteau</p>\
-        <p>Proche <a class=\'inversed\' href=\'#/immobilisations/bases/0\'>d\'Ikkyo</a>, l\'objectif est d\'amener le uke au sol en contrôlant le coude mais avec un contrôle du poignet différent (avant bras bloqué par la main retournée, paume vers le haut).</p>',
+        <p><strong>Objectif</strong> : Contrôle du poignet avec une attaque au couteau</p>\
+        <p>Proche d\'Ikkyo, l\'objectif est d\'amener le uke au sol en contrôlant le coude mais avec un contrôle du poignet différent (avant bras bloqué par la main retournée, paume vers le haut).</p>',
         title: 'Gokyo',
         min: "2"
       }],
       variantes: [{
         id: '0',
         img: 'images/movements/Ude_garami.png',
-        description:'',
+        description:'<h3>腕絡み</h3>\
+        <p>Variante d\'immobilisation.</p>\
+        <p><strong>Objectif</strong> : Immbolisation par enroulement (garami 絡み) du bras (ude 腕)</p>\
+        <p>Consiste à "trancher" le coude du partenaire par l\'arrière, permettant ainsi une clé d\'épaule et une amenée au sol. L\immobilisation finale est celle de Nikyo.</p>',
         title: 'Ude garami',
         min: "4"
       }, {
         id: '1',
         img: 'images/movements/Hiji_kime_osae.png',
-        description:'',
+        description:'<h3>肘決め押さえ</h3>\
+        <p>Variante d\'immobilisation contre une attaque en piqué (tsuki). Certains la considèrent comme un sixième principe (rokukyo).</p>\
+        <p><strong>Objectif</strong> : Immbolisation du coude par torsion inverse</p>\
+        <p>Il faut éviter l\'attaque en entrant profondément sur le côté du uke, pour se trouver là où il ne peut offrir aucune résistance.</p>',
         title: 'Hiji kime osae',
         min: "2"
       }]
