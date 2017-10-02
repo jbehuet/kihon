@@ -28,13 +28,15 @@ git commit -m "Auto-deploy"
 
 # Pushing to deploy branch
 echo '* Push ${Gre}(3/4)${RCol}'
-git subtree push --prefix dist origin master
+#git subtree push --prefix dist origin master
 
+git push origin `git subtree split --prefix dist master`:master --force
 #git push origin `git subtree split --prefix dist master`:master --force
 
 # Cleaning
 echo -e "* Cleaning ${Gre}(4/4)${RCol}"
 rm -rf dist
+git checkout dist
 
 echo
 echo '----------------------------------------------------------'
