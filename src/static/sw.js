@@ -3,7 +3,6 @@
 var cacheName = 'aikidoData-v1';
 var filesToCache = [
   'index.html',
-  'bundle.js',
   'images/bg3.png',
   'images/belts/1e_dan.png',
   'images/belts/1e_kyu.png',
