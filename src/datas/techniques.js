@@ -70,25 +70,37 @@ const techniques = {
       bases: [{
         id: '0',
         img: 'images/movements/Irimi_nage.png',
-        description:'',
+        description:'<h3>入身投げ</h3>\
+        <p>Projection en entrant dans le centre de l’adversaire.</p>\
+        <p><strong>Objectif</strong> : Projection en entrant</p>\
+        <p>Il faut éviter l\'attaque en entrant profondément sur le côté du partenaire, et contrôler ensuite étroitement la tête de Uke pour, le renverser, le projeter vers l\'arrière.</p>',
         title: 'Irimi nage',
         min: "5"
       }, {
         id: '1',
         img: 'images/movements/Shihoo_nage.png',
-        description:'',
-        title: 'Shihoo nage',
+        description:'<h3>四方投げ</h3>\
+        <p>Projection dans quatre directions.</p>\
+        <p><strong>Objectif</strong> : Projection dans quatre directions.</p>\
+        <p>On va enrouler le bras d’Uke tel la spirale d’une coquille d’escargot autours de l’axe de l’épaule.</p>',
+        title: 'Shiho nage',
         min: "5"
       }, {
         id: '2',
         img: 'images/movements/Kote_gaeshi.png',
-        description:'',
+        description:'<h3>小手返し</h3>\
+        <p>Torsion du poignet sur lui-même.</p>\
+        <p><strong>Objectif</strong> : Projection avec torsion du poignet.</p>\
+        <p>Le poignet sera retourné sur lui-même. Il s’agit d’une clé articulaire sur la main de frappe munie ou non d’une arme ou la main de saisie.</p>',
         title: 'Kote gaeshi',
         min: "4"
       }, {
         id: '3',
         img: 'images/movements/Kaiten_nage.png',
-        description:'',
+        description:'<h3>回転投げ</h3>\
+        <p>Projection en mettant en rotation par l\'intérieur ou l\'extèrieur.</p>\
+        <p><strong>Objectif</strong> : Projection en mettant en rotation.</p>\
+        <p>Exercer sur le bras d’attaque d’Uke comme une roue autour de son épaule. Il y a quatre déclinaisons principales pour Kaiten nage. Les versions ou variantes sont donc “Uchi Kaiten (intérieur) ou Soto Kaiten (extérieur)“. On peut les pratiquer sous forme Omote (positif) ou Ura (négatif)</p>',
         title: 'Kaiten nage',
         min: "4"
       }, {
