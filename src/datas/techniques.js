@@ -106,13 +106,19 @@ const techniques = {
       }, {
         id: '4',
         img: 'images/movements/Tenchi_nage.png',
-        description:'',
+        description:'<h3>天地投げ</h3>\
+        <p>Projection du ciel (天) et de la terre (地)</p>\
+        <p><strong>Objectif</strong> : Projection "Ciel / Terre"</p>\
+        <p>Glissez votre main gauche (qui représente la terre) et votre pied gauche sur le coté de votre partenaire pendant que vous balancez la main droite dans un mouvement circulaire (le ciel) et glissez votre pied vers l\'arrière de son corps.</p>',
         title: 'Tenchi nage',
-        min: "4"
+        min: "5"
       }, {
         id: '5',
         img: 'images/movements/Kokyu_hoo.png',
-        description:'',
+        description:'<h3></h3>\
+        <p>Kokyu signifie respirer(ko : expirer ; kyu : inspirer). Ho signifie la loi, la règle, mais aussi le procédé, la méthode. Il s’agit donc d’une "méthode de respiration".</p>\
+        <p><strong>Objectif</strong> : Apprendre à travailler avec le seika tanden, et non pas avec la tensiondes bras</p>\
+        <p>Apprendre à puiser sa puissance de l’appui que l’on prend au sol, de la transformer en énergie auniveau des hanches (la position de seiza permet d’avoir un contact presque direct du sol aux hanches, cequi facilite l’exercice), et de la transmettre à uke par les bras. C’est exactement la même chose que l’on faitlorsqu’on lance un ballon vers le haut en sautant : toute l’énergie qui arrive jusqu’aux mains et qui projettele ballon vers le haut est issue de l’impulsion des pieds sur le sol qui est ensuite transmise à travers tout lecorps par une extension de ce dernier.</p>',
         title: 'Kokyu hoo',
         min: "5"
       }],
