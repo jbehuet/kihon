@@ -1,6 +1,6 @@
 'use strict';
 
-var cacheName = 'aikidoData-20180207';
+var cacheName = 'aikidoData-20180322';
 var filesToCache = [
   'index.html',
   'images/bg3.png',
