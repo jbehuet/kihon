@@ -118,56 +118,80 @@ const techniques = {
         description:'<h3></h3>\
         <p>Kokyu signifie respirer(ko : expirer ; kyu : inspirer). Ho signifie la loi, la règle, mais aussi le procédé, la méthode. Il s’agit donc d’une "méthode de respiration".</p>\
         <p><strong>Objectif</strong> : Apprendre à travailler avec le seika tanden, et non pas avec la tensiondes bras</p>\
-        <p>Apprendre à puiser sa puissance de l’appui que l’on prend au sol, de la transformer en énergie auniveau des hanches (la position de seiza permet d’avoir un contact presque direct du sol aux hanches, cequi facilite l’exercice), et de la transmettre à uke par les bras. C’est exactement la même chose que l’on faitlorsqu’on lance un ballon vers le haut en sautant : toute l’énergie qui arrive jusqu’aux mains et qui projettele ballon vers le haut est issue de l’impulsion des pieds sur le sol qui est ensuite transmise à travers tout lecorps par une extension de ce dernier.</p>',
+        <p>Puiser sa puissance de l’appui que l’on prend au sol, de la transformer en énergie auniveau des hanches, et de la transmettre à uke par les bras. C’est la même chose que l’on fait lorsqu’on lance un ballon vers le haut en sautant : toute l’énergie qui arrive jusqu’aux mains et qui projette le ballon vers le haut est issue de l’impulsion des pieds sur le sol qui est ensuite transmise à travers tout le corps par une extension de ce dernier.</p>',
         title: 'Kokyu hoo',
         min: "5"
       }],
       variantes: [{
         id: '0',
         img: 'images/movements/Sokumen_irimi_nage.png',
-        description:'',
+        description:'<h3>側面入り身投げ</h3>\
+        <p>Projection avec barrage de l’avant-bras.</p>\
+        <p><strong>Objectif</strong> : Au contact rapproché du corps d’uke, hanche contre hanche, effectuer une projection avec barrage de l’avant-bras.</p>\
+        <p></p>',
         title: 'Sokumen irimi',
         min: "4"
       }, {
         id: '1',
         img: 'images/movements/Ude_kime_nage.png',
-        description:'',
+        description:'<h3>腕決め投げ</h3>\
+        <p>腕 : ude =  bras, manche : 決め. kime = vérouillage. 投げ : Nage = projection</p>\
+        <p><strong>Objectif</strong> : Projection par un contrôle du coude</p>\
+        <p>Il faut mettre le coude en hyper extension pour contrôler le partenaire. Puis entrer pour le projeter.</p>',
         title: 'Ude kime nage',
         min: "4"
       }, {
         id: '2',
         img: 'images/movements/Aiki_otoshi.png',
-        description:'',
+        description:'<h3>合気落し</h3>\
+        <p>合 : Ai = l\'harmonie; 気 : Ki = l\'énergie, 落し : Otoshi = chute</p>\
+        <p><strong>Objectif</strong> : Chute suite à une perte des appuis</p>\
+        <p>En entrant, il faut déséquilibrer légèrement uke vers l\'arrière puis en soulevant les jambes au niveau des genoux il chute.</p>',
         title: 'Aiki otoshi',
         min: "2"
       }, {
         id: '3',
         img: 'images/movements/Sumi_otoshi.png',
-        description:'',
+        description:'<h3>隅落し</h3>\
+        <p>隅 : Sumi = sumi , 落し : Otoshi = chute</p>\
+        <p><strong>Objectif</strong> : Projection dans le coin</p>\
+        <p>Il faut projeter légèrement sur le côté, en contrôlant la jambe afin qu\'elle ne recule pas.</p>',
         title: 'Sumi otoshi',
         min: "2"
       }, {
         id: '4',
         img: 'images/movements/Juji_garami.png',
-        description:'',
+        description:'<h3>十字  絡み</h3>\
+        <p>十字 : Juji = la croix , 絡み : Garami = enroulement</p>\
+        <p><strong>Objectif</strong> : Projection en enroulant les bras en croix</p>\
+        <p>Il faut mette les bras en croix, le croisement à hauteur des coudes.</p>',
         title: 'Juji garami',
         min: "2"
       }, {
         id: '5',
         img: 'images/movements/Ushiro_kiri_otoshi.png',
-        description:'',
+        description:'<h3>後ろ 切り落し</h3>\
+        <p>後ろ : Ushiro = derrière , 切り : Kiri = couper, 落し : Otoshi = chute </p>\
+        <p><strong>Objectif</strong> : Projection en coupant par l\'arrière</p>\
+        <p>Il faut se placer derrière et agir sur les épaules comme si on faisait une coupe verticale de haut en bas, pour déséquilibrer Uke</p>',
         title: 'Ushiro kiri',
         min: "1"
       }, {
         id: '6',
         img: 'images/movements/Kokyu_nage.png',
-        description:'',
+        description:'<h3>呼吸  投げ</h3>\
+        <p>呼 : Ko = expirer , 吸 : Kyu = inspirer, 投げ : Nage = projection </p>\
+        <p><strong>Objectif</strong> : Projection avec le souffle</p>\
+        <p>KO KYU = Expirer après avoir inspiré, c\'est la respiration, le souffle. Dans le temps et avec la légèreté d\'une respiration, on absorbe l\'attaque de uke on se rencontre et on laisse repartir</p>',
         title: 'Kokyu nage',
         min: "4"
       }, {
         id: '7',
         img: 'images/movements/Koshi_nage.png',
-        description:'',
+        description:'<h3>腰投げ</h3>\
+        <p>腰 : Koshi = hanche , 投げ : Nage = projection</p>\
+        <p><strong>Objectif</strong> : Projection avec la hanche</p>\
+        <p>La hanche fait un obstacle, Uke est déséquilibré et roule autour de la hanche de Tori, mais il ne faut pas chercher à porter avec la hanche</p>',
         title: 'Koshi nage',
         min: "2"
       }]
