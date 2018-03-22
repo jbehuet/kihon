@@ -17,7 +17,7 @@ const LEFT = '+1';
 const styles = {
     container: {
         marginTop: '64px',
-        padding: '24px'
+        padding: '0 24px'
     },
     card: {
         marginBottom: '10px',
@@ -41,6 +41,10 @@ class Technique extends Component {
         super(props);
         const { id } = this.props.params;
         this.state = { index: Number(id) };
+    }
+
+    capitalize(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
     }
 
     onSwiped(direction) {
@@ -74,6 +78,11 @@ class Technique extends Component {
                         preventDefaultTouchmoveEvent
                         onSwipedLeft={() => this.onSwiped(LEFT)}
                         onSwipedRight={() => this.onSwiped(RIGHT)}>
+                        <Row>
+                            <Col xs={12}>
+                                <h3>{this.capitalize(category)}/{subcategory}</h3>
+                            </Col>
+                        </Row>
                         <Row>
                             <Col key={technique.id} xs={12}>
                                 <Card style={styles.card}>
