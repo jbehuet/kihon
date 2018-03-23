@@ -2,7 +2,7 @@
 
 #### Prerequisites
 
-NodeJS
+You need `node`, `npm` to be installed on your machine. That's all.
 
 #### Installation
 
@@ -14,7 +14,7 @@ npm i
 
 #### Development
 
-`npm start`
+`npm start` serves the app on http://localhost:3000
 
 #### Build
 
@@ -22,11 +22,11 @@ npm i
 
 #### Contributing
 
-Fork it!
-Create your feature branch: git checkout -b my-new-feature
-Commit your changes: git commit -am 'Add some feature'
-Push to the branch: git push origin my-new-feature
-Submit a pull request
+Fork it! 
+Create your feature branch: `git checkout -b my-new-feature` 
+Commit your changes: `git commit -am 'Add some feature'` 
+Push to the branch: `git push origin my-new-feature` 
+Submit a pull request 
 
 
 #### Licence
