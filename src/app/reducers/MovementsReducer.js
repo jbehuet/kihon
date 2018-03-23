@@ -15,19 +15,19 @@ const movementsReducer = (state = defaultState, action) => {
         ...state,
         movements: {
           immobilisations: {
-            bases: state.movements.immobilisations.bases.filter(el => Number(el.min) >= Number(kyu)),
-            variantes: state.movements.immobilisations.variantes.filter(el => Number(el.min) >= Number(kyu))
+            bases: movements.immobilisations.bases.filter(el => Number(el.min) >= Number(kyu)),
+            variantes: movements.immobilisations.variantes.filter(el => Number(el.min) >= Number(kyu))
           },
           projections: {
-            bases: state.movements.projections.bases.filter(el => Number(el.min) >= Number(kyu)),
-            variantes: state.movements.projections.variantes.filter(el => Number(el.min) >= Number(kyu))
+            bases: movements.projections.bases.filter(el => Number(el.min) >= Number(kyu)),
+            variantes: movements.projections.variantes.filter(el => Number(el.min) >= Number(kyu))
           },
           saisies: {
-            faces: state.movements.saisies.faces.filter(el => Number(el.min) >= Number(kyu)),
-            arrieres: state.movements.saisies.arrieres.filter(el => Number(el.min) >= Number(kyu))
+            faces: movements.saisies.faces.filter(el => Number(el.min) >= Number(kyu)),
+            arrieres: movements.saisies.arrieres.filter(el => Number(el.min) >= Number(kyu))
           },
           frappes: {
-            bases: state.movements.frappes.bases.filter(el => Number(el.min) >= Number(kyu))
+            bases: movements.frappes.bases.filter(el => Number(el.min) >= Number(kyu))
           }
         }
       }

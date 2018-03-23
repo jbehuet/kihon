@@ -31,6 +31,9 @@ const styles = {
     },
     link: {
         display: 'block'
+    },
+    filter: {
+        padding: '0px'
     }
 }
 @connect()
@@ -38,6 +41,9 @@ class SideNav extends Component {
 
     constructor(props) {
         super(props)
+        this.state = {
+            filter: '0'
+        };
     }
 
     handleRequestChange() {
@@ -45,26 +51,27 @@ class SideNav extends Component {
     }
 
     handleChangeKyu(event, value) {
-        this.props.router.push('/')
+        this.setState({ filter: value })
         this.props.dispatch(Actions.fetchFiltred(value))
         this.props.onChangeKyu()
     }
 
     render() {
         const { location } = this.props.router
+        const { filter } = this.state;
         return (
             <Drawer docked={false} width={200} open={this.props.open} onRequestChange={this.handleRequestChange.bind(this)}>
 
                 <MenuItem style={styles.header} disabled={true}>Aikido - 合気道</MenuItem>
                 <MenuItem onTouchTap={this.handleRequestChange.bind(this)}><Link to="/" style={styles.link}>Accueil</Link></MenuItem>
                 <Divider />
-                <List>
+                <List style={styles.filter}>
                     <ListItem
                         primaryText="Filtre"
-                        initiallyOpen={true}
+                        initiallyOpen={false}
                         primaryTogglesNestedList={true}
                         nestedItems={[
-                            <RadioButtonGroup key={1} name="belts" defaultSelected="0" onChange={this.handleChangeKyu.bind(this)} style={styles.radio}>
+                            <RadioButtonGroup key={1} name="belts" defaultSelected={filter} onChange={this.handleChangeKyu.bind(this)} style={styles.radio}>
                                 <RadioButton value="5" label="5e Kyu" checkedIcon={< img src='images/belts/5e_kyu.png' width="24" />} uncheckedIcon={< img src='images/belts/none.png' width="24" />} />
                                 <RadioButton value="4" label="4e Kyu" checkedIcon={< img src='images/belts/4e_kyu.png' width="24" />} uncheckedIcon={< img src='images/belts/none.png' width="24" />} />
                                 <RadioButton value="3" label="3e Kyu" checkedIcon={< img src='images/belts/3e_kyu.png' width="24" />} uncheckedIcon={< img src='images/belts/none.png' width="24" />} />
