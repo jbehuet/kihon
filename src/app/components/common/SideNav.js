@@ -79,7 +79,7 @@ class SideNav extends Component {
                 </List>
                 <Divider />
                 <MenuItem onTouchTap={this.handleRequestChange.bind(this)}><Link to="/about" style={styles.link}>A propos</Link></MenuItem>
-                <div style={styles.footer}>© 2017 - Images propriétées de la FFAAA</div>
+                <div style={styles.footer}>© 2018 - Images propriétées de la FFAAA</div>
 
             </Drawer>
         );
