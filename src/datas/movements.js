@@ -1,4 +1,4 @@
-const techniques = {
+const movements = {
     immobilisations: {
       bases: [{
         id: '0',
@@ -331,4 +331,4 @@ const techniques = {
     }
   }
 
-  export default techniques
+  export default movements

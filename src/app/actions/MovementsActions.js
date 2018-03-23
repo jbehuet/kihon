@@ -1,8 +1,13 @@
+export const Tabs = {
+    TECHNIQUES: 'Techniques',
+    ATTAQUES: 'Attaques'
+}
+
 export const Types = {
     FETCH_ALL: 'FETCH_ALL',
     FETCH_FILTRED: 'FETCH_FILTRED',
+    SELECT_TAB: 'SELECT_TAB',
 }
-
 
 export class Actions {
 
@@ -16,6 +21,13 @@ export class Actions {
         return {
             type: Types.FETCH_FILTRED,
             payload: { kyu }
+        }
+    }
+
+    static selectTab(tab) {
+        return {
+            type: Types.SELECT_TAB,
+            payload: { tab }
         }
     }
 }

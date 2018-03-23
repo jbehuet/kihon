@@ -6,7 +6,7 @@ import Divider from 'material-ui/Divider';
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import MenuItem from 'material-ui/MenuItem';
 import { List, ListItem } from 'material-ui/List';
-import { Actions } from '../../actions/TechniquesActions';
+import { Actions } from '../../actions/MovementsActions';
 
 const styles = {
     header: {
@@ -33,9 +33,7 @@ const styles = {
         display: 'block'
     }
 }
-@connect((store) => {
-    return { techniques: store.techniques }
-})
+@connect()
 class SideNav extends Component {
 
     constructor(props) {

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import TechniquesReducer from './TechniquesReducer';
+import MovementsReducer from './MovementsReducer';
 
 export default combineReducers({
-  techniques: TechniquesReducer
+  movements: MovementsReducer
 })

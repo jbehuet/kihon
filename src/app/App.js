@@ -17,8 +17,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 //Components
 import Main from './components/Main';
 import About from './components/About';
-import Movements from './components/movements/Movements';
-import Technique from './components/movements/Technique';
+import MovementsContainer from './components/movements/MovementsContainer';
+import Movement from './components/movements/Movement';
 
 //Redux Store
 import store from './store';
@@ -41,8 +41,8 @@ ReactDOM.render(
     <Provider store={store}>
       <Router history={hashHistory}>
         <Route path="/" component={Main}>
-          <IndexRoute component={Movements} />
-          <Route path="/:category/:subcategory/:id" component={Technique} />
+          <IndexRoute component={MovementsContainer} />
+          <Route path="/:category/:subcategory/:id" component={Movement} />
           <Route path="/about" component={About} />
         </Route>
       </Router>

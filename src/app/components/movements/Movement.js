@@ -33,9 +33,9 @@ const styles = {
 };
 
 @connect((store) => {
-    return { techniques: store.techniques }
+    return { movements: store.movements }
 })
-class Technique extends Component {
+class Movement extends Component {
 
     constructor(props) {
         super(props);
@@ -48,14 +48,15 @@ class Technique extends Component {
     }
 
     onSwiped(direction) {
+        const { movements } = this.props.movements;
         const { category, subcategory } = this.props.params;
         const change = direction === RIGHT ? RIGHT : LEFT;
         const adjustedIdx = this.state.index + Number(change);
         let newIdx;
-        if (adjustedIdx >= this.props.techniques[category][subcategory].length) {
+        if (adjustedIdx >= movements[category][subcategory].length) {
             newIdx = 0;
         } else if (adjustedIdx < 0) {
-            newIdx = this.props.techniques[category][subcategory].length - 1
+            newIdx = movements[category][subcategory].length - 1
         } else {
             newIdx = adjustedIdx;
         }
@@ -65,10 +66,10 @@ class Technique extends Component {
     render() {
         const { category, subcategory, id } = this.props.params;
         const { index = 0 } = this.state;
-        const techniques = this.props.techniques[category][subcategory];
-        let technique = techniques[index];
+        const movements = this.props.movements.movements[category][subcategory];
+        let movement = movements[index];
 
-        if (technique) {
+        if (movement) {
             return (
                 <div style={styles.container}>
                     <Swipeable
@@ -84,7 +85,7 @@ class Technique extends Component {
                             </Col>
                         </Row>
                         <Row>
-                            <Col key={technique.id} xs={12}>
+                            <Col key={movement.id} xs={12}>
                                 <Card style={styles.card}>
                                     <Row end="xs">
                                         <Col xs={12} style={styles.close}>
@@ -95,12 +96,12 @@ class Technique extends Component {
                                     </Row>
                                     <LazyLoad height={200} offset={100}>
                                         <CardHeader
-                                            title={technique.title}
+                                            title={movement.title}
                                             subtitle={`${category}/${subcategory}`}
-                                            avatar={technique.img}
+                                            avatar={movement.img}
                                         />
                                     </LazyLoad>
-                                    <CardText dangerouslySetInnerHTML={{ __html: technique.description }}>
+                                    <CardText dangerouslySetInnerHTML={{ __html: movement.description }}>
                                     </CardText>
                                     <CardActions>
                                         <Row className='no-margin'>
@@ -157,4 +158,4 @@ class Technique extends Component {
 
 }
 
-export default Technique
+export default Movement
