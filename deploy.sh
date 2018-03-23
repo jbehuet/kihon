@@ -23,22 +23,27 @@ npm run build
 
 # Adding new files
 echo -e "* Add / Commit ${Gre}(2/4)${RCol}"
-git add dist --force
+cd dist
+git init
+git add .
+#git add dist --force
 git commit -m "Auto-deploy"
 
 # Pushing to deploy branch
 echo -e "* Push ${Gre}(3/4)${RCol}"
-git subtree push --prefix dist origin master
-
+git remote add origin https://github.com/jbehuet/aikido.git
+git push --force origin master
+#git subtree push --prefix dist origin master
 #git push origin `git subtree split --prefix dist master`:master --force
 
 # Cleaning
 echo -e "* Cleaning ${Gre}(4/4)${RCol}"
+cd ..
 rm -rf dist
-git checkout dist
+#git checkout dist
 
 echo
 echo '----------------------------------------------------------'
-echo -e "Deployed to : ${Cya}https://jbehuet.github.io/aikido/#/${RCol}"
+echo -e "Deployed to : ${Cya}https://kihon.fr${RCol}"
 echo '----------------------------------------------------------'
 
