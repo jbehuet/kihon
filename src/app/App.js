@@ -1,6 +1,5 @@
-/* jshint ignore:start */
-import style from '../scss/main.scss'; //require style
-/* jshint ignore:end */
+//require style
+import '../scss/main.scss'; 
 
 import React from 'react';
 import ReactDOM from 'react-dom';
