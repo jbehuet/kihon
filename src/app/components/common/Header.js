@@ -1,63 +1,73 @@
-import React, {Component} from 'react';
-import { browserHistory } from 'react-router'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import AppBar from 'material-ui/AppBar';
-import SideNav from './SideNav';
 import IconButton from 'material-ui/IconButton';
 import ViewList from 'material-ui/svg-icons/action/view-list';
 import ViewModule from 'material-ui/svg-icons/action/view-module';
 
+import SideNav from './SideNav';
+
 const styles = {
-    header: {
-        position: "fixed",
-        top: 0
-    }
+  header: {
+    position: 'fixed',
+    top: 0,
+  },
 };
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+      list: false,
+    };
+    this.handleLeftIconButtonTouchTap = this.handleLeftIconButtonTouchTap.bind(this);
+    this.handleRightIconButtonTouchTap = this.handleRightIconButtonTouchTap.bind(this);
+    this.handleChangeKyu = this.handleChangeKyu.bind(this);
+  }
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            open: false,
-            list: false
-        };
-    }
+  handleLeftIconButtonTouchTap() {
+    this.setState({
+      open: !this.state.open,
+    });
+  }
 
-    handleLeftIconButtonTouchTap(event) {
-        this.setState({
-            open: !this.state.open
-        });
-    }
+  handleRightIconButtonTouchTap() {
+    this.setState({
+      list: !this.state.list,
+    });
+    this.props.onClickChangeView();
+  }
 
-    handleRightIconButtonTouchTap(event) {
-        this.setState({
-            list: !this.state.list
-        });
-        this.props.onClickChangeView();
-    }
+  handleChangeKyu() {
+    this.setState({
+      open: !this.state.open,
+    });
+  }
 
-    handleChangeKyu(kyu) {
-      this.props.onChangeKyu(kyu)
-      this.setState({
-          open: !this.state.open
-      });
-    }
-
-    render() {
-        const rightButton = (this.state.list ? <ViewModule /> : <ViewList />);
-        return (
-            <div>
-                <SideNav open={this.state.open}
-                          onRequestChange={this.handleLeftIconButtonTouchTap.bind(this)}
-                          onChangeKyu={this.handleChangeKyu.bind(this)}></SideNav>
-                <AppBar title="Aikido - 合気道" style={styles.header}
-                        iconElementRight={<IconButton>{rightButton}</IconButton>}
-                        onRightIconButtonTouchTap={this.handleRightIconButtonTouchTap.bind(this)}
-                        onLeftIconButtonTouchTap={this.handleLeftIconButtonTouchTap.bind(this)}></AppBar>
-            </div>
-        )
-    }
-
+  render() {
+    const rightButton = (this.state.list ? <ViewModule /> : <ViewList />);
+    return (
+      <div>
+        <SideNav
+          open={this.state.open}
+          onRequestChange={this.handleLeftIconButtonTouchTap}
+          onChangeKyu={this.handleChangeKyu}
+        />
+        <AppBar
+          title="Aikido - 合気道"
+          style={styles.header}
+          iconElementRight={<IconButton>{rightButton}</IconButton>}
+          onRightIconButtonTouchTap={this.handleRightIconButtonTouchTap}
+          onLeftIconButtonTouchTap={this.handleLeftIconButtonTouchTap}
+        />
+      </div>
+    );
+  }
 }
 
-export default Header
+Header.propTypes = {
+  onClickChangeView: PropTypes.func.isRequired,
+};
+
+export default Header;

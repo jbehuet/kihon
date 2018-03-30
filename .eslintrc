@@ -1,37 +1,44 @@
 {
-    "parser": "babel-eslint",
-    "parserOptions": {
-      "ecmaFeatures": {
-        "jsx": true,
-        "experimentalDecorators": true
-      }
-    },
-    "env": {
-      "es6": true
-    },
-    "plugins": [
-      "react"
-    ],
-    "extends": [
-      "eslint:recommended",
-      "plugin:react/recommended",
-      "airbnb"
-    ],
-    "globals": {
-      "__DEV__": false,
-      "window": false,
-      "fetch": false,
-      "document": false,
-      "navigator": false,
-    },
-    "rules": {
-      "react/forbid-prop-types": 0,
-      "react/jsx-filename-extension": 0,
-      "import/no-extraneous-dependencies": [
-        2,
-        { 
-          "devDependencies": true
-        }
-      ]
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalDecorators": true
     }
+  },
+  "env": {
+    "es6": true
+  },
+  "plugins": [],
+  "extends": [
+    "eslint:recommended",
+    "airbnb"
+  ],
+  "globals": {
+    "__DEV__": false,
+    "window": false,
+    "fetch": false,
+    "document": false,
+    "navigator": false
+  },
+  "rules": {
+    "max-len": [
+      2,
+      {
+        "code": 150,
+        "tabWidth": 4,
+        "ignoreUrls": true
+      }
+    ],
+    "no-console": 0,
+    "function-paren-newline": 0,
+    "react/forbid-prop-types": 0,
+    "react/jsx-filename-extension": 0,
+    "import/no-extraneous-dependencies": [
+      2,
+      {
+        "devDependencies": true
+      }
+    ]
   }
+}
