@@ -1,76 +1,64 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import { connect } from 'react-redux';
-import { Card, CardActions, CardMedia, CardTitle } from 'material-ui/Card';
+import { Card, CardMedia, CardTitle } from 'material-ui/Card';
 import { List, ListItem } from 'material-ui/List';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
 import Avatar from 'material-ui/Avatar';
-import FlatButton from 'material-ui/FlatButton';
-import LazyLoad from 'react-lazyload';
 
 const styles = {
   card: {
     marginBottom: '10px',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   title: {
     color: '#AB232F',
     fontSize: '0.9em',
-    margin: '0 -19px'
-  }
+    margin: '0 -19px',
+  },
 };
 
-@connect((store) => {
-  return { movements: store.movements }
-})
 class Movements extends Component {
-
-  constructor() {
-    super();
-  }
 
   renderGrid(category, subCategory) {
     const { movements } = this.props.movements;
     let grid;
 
     if (!this.props.list) {
-      grid = <Grid fluid>
-        <Row>
-          {movements[category][subCategory].map((tile, i) => (
-            <Col key={i} xs={6} md={3} lg={2}>
-              <Link to={`/${category}/${subCategory}/${tile.id}`}>
-                <Card style={styles.card} >
-                  <CardMedia>
-                    <img src={tile.img} />
-                  </CardMedia>
-                  <CardTitle title={tile.title} titleStyle={styles.title} />
-                </Card>
-              </Link>
-            </Col>
-          ))}
-        </Row>
-      </Grid>
+      grid = (
+        <Grid fluid>
+          <Row>
+            {movements[category][subCategory].map((tile, i) => (
+              <Col key={i} xs={6} md={3} lg={2}>
+                <Link to={`/${category}/${subCategory}/${tile.id}`}>
+                  <Card style={styles.card} >
+                    <CardMedia>
+                      <img src={tile.img} alt={tile.title} />
+                    </CardMedia>
+                    <CardTitle title={tile.title} titleStyle={styles.title} />
+                  </Card>
+                </Link>
+              </Col>
+            ))}
+          </Row>
+        </Grid>);
     } else {
-      grid = <List>
-        {movements[category][subCategory].map((tile, i) => (
-          <Link key={i} to={`/${category}/${subCategory}/${tile.id}`}>
-            <ListItem primaryText={tile.title} insetChildren={true} leftAvatar={< Avatar src={tile.img} />} />
-          </Link>
-        ))}
-      </List>
+      grid = (
+        <List>
+          {movements[category][subCategory].map((tile, i) => (
+            <Link key={i} to={`/${category}/${subCategory}/${tile.id}`}>
+              <ListItem primaryText={tile.title} insetChildren leftAvatar={<Avatar src={tile.img} />} />
+            </Link>
+          ))}
+        </List>);
     }
 
-    return grid
+    return grid;
   }
 
   renderTechniques() {
-    const styleRoot = (this.props.list
-      ? {
-        textAlign: ''
-      }
-      : {
-        textAlign: 'center'
-      });
+    const styleRoot = { textAlign: this.props.list ? '' : 'center' };
     return (
       <div style={styleRoot}>
         <h2>Immobilisations</h2>
@@ -88,13 +76,7 @@ class Movements extends Component {
   }
 
   renderAttacks() {
-    const styleRoot = (this.props.list
-      ? {
-        textAlign: ''
-      }
-      : {
-        textAlign: 'center'
-      });
+    const styleRoot = { textAlign: (this.props.list ? '' : 'center') };
     return (
       <div style={styleRoot}>
         <h2>Saisies</h2>
@@ -108,11 +90,21 @@ class Movements extends Component {
   }
 
   render() {
-    if (this.props.isTechniques)
+    if (this.props.isTechniques) {
       return this.renderTechniques();
-    else
-      return this.renderAttacks();
+    }
+    return this.renderAttacks();
   }
 }
 
-export default Movements
+Movements.propTypes = {
+  movements: PropTypes.object.isRequired,
+  list: PropTypes.bool.isRequired,
+  isTechniques: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = state => ({
+  movements: state.movements,
+});
+
+export default connect(mapStateToProps)(Movements);
