@@ -20,7 +20,6 @@ const styles = {
 };
 
 class Movements extends Component {
-
   renderGrid(category, subCategory) {
     const { movements } = this.props.movements;
     let grid;
@@ -29,8 +28,8 @@ class Movements extends Component {
       grid = (
         <Grid fluid>
           <Row>
-            {movements[category][subCategory].map((tile, i) => (
-              <Col key={i} xs={6} md={3} lg={2}>
+            {movements[category][subCategory].map(tile => (
+              <Col key={tile.title} xs={6} md={3} lg={2}>
                 <Link to={`/${category}/${subCategory}/${tile.id}`}>
                   <Card style={styles.card} >
                     <CardMedia>
@@ -46,8 +45,8 @@ class Movements extends Component {
     } else {
       grid = (
         <List>
-          {movements[category][subCategory].map((tile, i) => (
-            <Link key={i} to={`/${category}/${subCategory}/${tile.id}`}>
+          {movements[category][subCategory].map(tile => (
+            <Link key={tile.title} to={`/${category}/${subCategory}/${tile.id}`}>
               <ListItem primaryText={tile.title} insetChildren leftAvatar={<Avatar src={tile.img} />} />
             </Link>
           ))}
@@ -72,7 +71,7 @@ class Movements extends Component {
         <h3>Variantes</h3>
         {this.renderGrid('projections', 'variantes')}
       </div>
-    )
+    );
   }
 
   renderAttacks() {
@@ -86,7 +85,7 @@ class Movements extends Component {
         <h2>Frappes</h2>
         {this.renderGrid('frappes', 'bases')}
       </div>
-    )
+    );
   }
 
   render() {

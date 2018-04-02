@@ -1,6 +1,6 @@
 {
-  "name": "Aikido",
-  "version": "1.0.0",
+  "name": "kihon",
+  "version": "0.1.0",
   "scripts": {
     "start": "webpack-dev-server -d --hot --inline --history-api-fallback --content-base ./src/static",
     "build": "webpack --config webpack.config.prod.js --progress -p"
