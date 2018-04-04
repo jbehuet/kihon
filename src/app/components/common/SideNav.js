@@ -115,6 +115,8 @@ class SideNav extends Component {
           />
         </List>
         <Divider />
+        <MenuItem onTouchTap={this.handleRequestChange}><Link to="/traineeships" style={styles.link}>Stages</Link></MenuItem>
+        <Divider />
         <MenuItem onTouchTap={this.handleRequestChange}><Link to="/about" style={styles.link}>A propos</Link></MenuItem>
         <div style={styles.footer}>© 2018 - Images propriétées de la FFAAA</div>
       </Drawer>

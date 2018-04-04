@@ -116,7 +116,7 @@ class Movement extends Component {
     return (
       <div style={styles.container}>
         <Row>
-          <Col xsOffset={2} xs={8}>
+          <Col xs={12}>
             <Card style={styles.card}>
               <Row end="xs">
                 <Col xs={12} style={styles.close}>

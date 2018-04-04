@@ -12,6 +12,7 @@ import Main from './components/Main';
 import About from './components/About';
 import MovementsContainer from './components/movements/MovementsContainer';
 import Movement from './components/movements/Movement';
+import TraineeshipsContainer from './components/traineeships/TraineeshipsContainer';
 
 // require style
 import '../scss/main.scss';
@@ -43,6 +44,7 @@ ReactDOM.render(
         <Route path="/" component={Main}>
           <IndexRoute component={MovementsContainer} />
           <Route path="/:category/:subcategory/:id" component={Movement} />
+          <Route path="/traineeships" component={TraineeshipsContainer} />
           <Route path="/about" component={About} />
         </Route>
       </Router>

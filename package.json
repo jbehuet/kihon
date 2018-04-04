@@ -7,7 +7,9 @@
   },
   "author": "Jérôme BEHUET<jbehuet@gmail.com>",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "moment": "^2.22.0"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.1.1",

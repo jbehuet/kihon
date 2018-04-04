@@ -24,6 +24,7 @@ class Main extends Component {
   }
 
   render() {
+    // TODO: Use props.location for hide change view button
     return (
       <div style={styles.app}>
         <Header onClickChangeView={this.handleChangeDisplay} />
