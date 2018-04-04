@@ -117,6 +117,11 @@ class Movement extends Component {
       <div style={styles.container}>
         <Row>
           <Col xs={12}>
+            <h3>Erreur</h3>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12}>
             <Card style={styles.card}>
               <Row end="xs">
                 <Col xs={12} style={styles.close}>
