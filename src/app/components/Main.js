@@ -24,10 +24,13 @@ class Main extends Component {
   }
 
   render() {
-    // TODO: Use props.location for hide change view button
+    const { pathname } = this.props.location;
     return (
       <div style={styles.app}>
-        <Header onClickChangeView={this.handleChangeDisplay} />
+        <Header
+          displayChangeViewIcon={(pathname === '/')}
+          onClickChangeView={this.handleChangeDisplay}
+        />
         {React.cloneElement(this.props.children, { list: this.state.list })}
       </div>
     );
@@ -36,6 +39,7 @@ class Main extends Component {
 
 Main.propTypes = {
   children: PropTypes.element.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 export default Main;

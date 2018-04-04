@@ -46,6 +46,7 @@ class Header extends Component {
   }
 
   render() {
+    const { displayChangeViewIcon } = this.props;
     const rightButton = (this.state.list ? <ViewModule /> : <ViewList />);
     return (
       <div>
@@ -57,7 +58,7 @@ class Header extends Component {
         <AppBar
           title="Aikido - 合気道"
           style={styles.header}
-          iconElementRight={<IconButton>{rightButton}</IconButton>}
+          iconElementRight={displayChangeViewIcon ? <IconButton>{rightButton}</IconButton> : null}
           onRightIconButtonTouchTap={this.handleRightIconButtonTouchTap}
           onLeftIconButtonTouchTap={this.handleLeftIconButtonTouchTap}
         />
@@ -67,6 +68,7 @@ class Header extends Component {
 }
 
 Header.propTypes = {
+  displayChangeViewIcon: PropTypes.bool.isRequired,
   onClickChangeView: PropTypes.func.isRequired,
 };
 
