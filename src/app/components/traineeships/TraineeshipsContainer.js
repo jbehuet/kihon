@@ -107,21 +107,22 @@ class TraineeshipsContainer extends Component {
         {!loading && !error &&
           <div>
             <List>
-              {traineeships.map((traineeship, i) => (
-                <ListItem
-                  key={traineeship.uid}
-                  primaryText={
-                    <div>{formatDate(traineeship)}
-                      <span style={styles.location}>{traineeship.location}</span>
-                    </div>}
-                  secondaryText={
-                    <p>
-                      <span>{traineeship.description}</span> -- {traineeship.summary}
-                    </p>
-                  }
-                  secondaryTextLines={2} />
+              {traineeships.map(traineeship => (
+                <a key={traineeship.uid} href={traineeship.url} target="blank">
+                  <ListItem
+                    primaryText={
+                      <div>{formatDate(traineeship)}
+                        <span style={styles.location}>{traineeship.location}</span>
+                      </div>}
+                    secondaryText={
+                      <p>
+                        <span>{traineeship.description}</span> -- {traineeship.summary}
+                      </p>
+                    }
+                    secondaryTextLines={2}
+                  />
+                </a>
               ))}
-
             </List>
           </div>
         }
