@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import { List, ListItem } from 'material-ui/List';
+import { Row, Col } from 'react-flexbox-grid';
 import CircularProgress from 'material-ui/CircularProgress';
 import moment from 'moment';
 
@@ -19,10 +20,6 @@ const styles = {
   },
   selectField: {
     width: '100%',
-  },
-  location: {
-    position: 'absolute',
-    right: '10px',
   },
   progress: {
     textAlign: 'center',
@@ -111,9 +108,15 @@ class TraineeshipsContainer extends Component {
                 <a key={traineeship.uid} href={traineeship.url} target="blank">
                   <ListItem
                     primaryText={
-                      <div>{formatDate(traineeship)}
-                        <span style={styles.location}>{traineeship.location}</span>
-                      </div>}
+                      <Row>
+                        <Col xs={12} md={6}>
+                          {formatDate(traineeship)}
+                        </Col>
+                        <Col xs={12} md={6} className="text-right-desktop">
+                          {traineeship.location}
+                        </Col>
+                      </Row>
+                    }
                     secondaryText={
                       <p>
                         <span>{traineeship.description}</span> -- {traineeship.summary}
