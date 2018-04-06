@@ -19,25 +19,40 @@ const styles = {
   },
 };
 
+
 class Movements extends Component {
+  renderItem(tile) {
+    if (!this.props.list) {
+      return (
+        <Card key={tile.title} style={styles.card} >
+          <CardMedia>
+            <img src={tile.img} alt={tile.title} />
+          </CardMedia>
+          <CardTitle title={tile.title} titleStyle={styles.title} />
+        </Card>
+      );
+    }
+    return (
+      <ListItem key={tile.title} primaryText={tile.title} insetChildren leftAvatar={<Avatar src={tile.img} />} />
+    );
+  }
+
   renderGrid(category, subCategory) {
     const { movements } = this.props.movements;
     let grid;
-
     if (!this.props.list) {
       grid = (
         <Grid fluid>
           <Row>
             {movements[category][subCategory].map(tile => (
               <Col key={tile.title} xs={6} md={3} lg={2}>
-                <Link to={`/${category}/${subCategory}/${tile.id}`}>
-                  <Card style={styles.card} >
-                    <CardMedia>
-                      <img src={tile.img} alt={tile.title} />
-                    </CardMedia>
-                    <CardTitle title={tile.title} titleStyle={styles.title} />
-                  </Card>
-                </Link>
+                {this.props.isTechniques ?
+                  <Link to={`/${category}/${subCategory}/${tile.id}`}>
+                    {this.renderItem(tile)}
+                  </Link>
+                  :
+                  this.renderItem(tile)
+                }
               </Col>
             ))}
           </Row>
@@ -45,11 +60,17 @@ class Movements extends Component {
     } else {
       grid = (
         <List>
-          {movements[category][subCategory].map(tile => (
-            <Link key={tile.title} to={`/${category}/${subCategory}/${tile.id}`}>
-              <ListItem primaryText={tile.title} insetChildren leftAvatar={<Avatar src={tile.img} />} />
-            </Link>
-          ))}
+          {movements[category][subCategory].map((tile) => {
+            if (this.props.isTechniques) {
+              return (
+                <Link key={tile.title} to={`/${category}/${subCategory}/${tile.id}`}>
+                  {this.renderItem(tile)}
+                </Link>
+              );
+            }
+            return this.renderItem(tile);
+          })
+          }
         </List>);
     }
 
