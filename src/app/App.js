@@ -16,6 +16,7 @@ import TraineeshipsContainer from './components/traineeships/TraineeshipsContain
 
 // require style
 import '../scss/main.scss';
+import registerServiceWorker from './registerServiceWorker';
 
 // Redux Store
 import store from './Store';
@@ -51,9 +52,4 @@ ReactDOM.render(
     </Provider>
   </MuiThemeProvider>, document.getElementById('app'));
 
-
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker
-    .register('sw.js')
-    .then(() => { console.log('Service Worker Registered'); });
-}
+registerServiceWorker();
