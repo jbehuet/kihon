@@ -77,36 +77,42 @@ class SideNav extends Component {
                 <RadioButton
                   value="5"
                   label="5e Kyu"
+                  name="5e Kyu"
                   checkedIcon={<img src="images/belts/5e_kyu.png" width="24" alt="5e_kyu" />}
                   uncheckedIcon={<img src="images/belts/none.png" width="24" alt="5e_kyu" />}
                 />
                 <RadioButton
                   value="4"
                   label="4e Kyu"
+                  name="4e Kyu"
                   checkedIcon={<img src="images/belts/4e_kyu.png" width="24" alt="4e_kyu" />}
                   uncheckedIcon={<img src="images/belts/none.png" width="24" alt="4e_kyu" />}
                 />
                 <RadioButton
                   value="3"
                   label="3e Kyu"
+                  name="3e Kyu"
                   checkedIcon={<img src="images/belts/3e_kyu.png" width="24" alt="3e_kyu" />}
                   uncheckedIcon={<img src="images/belts/none.png" width="24" alt="3e_kyu" />}
                 />
                 <RadioButton
                   value="2"
                   label="2e Kyu"
+                  name="2e Kyu"
                   checkedIcon={<img src="images/belts/2e_kyu.png" width="24" alt="2e_kyu" />}
                   uncheckedIcon={<img src="images/belts/none.png" width="24" alt="2e_kyu" />}
                 />
                 <RadioButton
                   value="1"
                   label="1e Kyu"
+                  name="1e Kyu"
                   checkedIcon={<img src="images/belts/6e_kyu.png" width="24" alt="1e_kyu" />}
                   uncheckedIcon={<img src="images/belts/none.png" width="24" alt="1e_kyu" />}
                 />
                 <RadioButton
                   value="0"
                   label="Shodan"
+                  name="Shodan"
                   checkedIcon={<img src="images/belts/1e_dan.png" width="24" alt="shodan" />}
                   uncheckedIcon={<img src="images/belts/none.png" width="24" alt="shodan" />}
                 />
