@@ -67,7 +67,6 @@ module.exports = {
       inject: true,
       template: 'src/static/index.html',
     }),
-    new CopyWebpackPlugin([{ from: 'src/static/' }], { ignore: ['index.html'] }),
     new ManifestPlugin({
       fileName: 'asset-manifest.json',
     }),
@@ -87,8 +86,9 @@ module.exports = {
       },
       minify: true, // minify and uglify the script
       navigateFallback: '/index.html',
-      staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
+      staticFileGlobsIgnorePatterns: [/\.DS_Store/, /\.map$/, /asset-manifest\.json$/],
     }),
+    new CopyWebpackPlugin([{ from: 'src/static/' }], { ignore: ['index.html'] }),
     new webpack.NoEmitOnErrorsPlugin()
   ]
 };
