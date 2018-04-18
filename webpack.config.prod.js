@@ -5,7 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 try {
   require('os').networkInterfaces();
@@ -62,7 +61,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin('dist/'),
     new HtmlWebpackPlugin({
       inject: true,
       template: 'src/static/index.html',
