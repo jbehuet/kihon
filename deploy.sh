@@ -17,33 +17,38 @@ echo -e "${Yel}------------"
 echo -e " DEPLOYING"
 echo -e "------------ ${RCol}"
 
-# Build
-echo -e "* Build : ${Gre}(1/4)${RCol}"
+echo -e "* Prepare : ${Gre}(1/5)${RCol}"
+# Build the content of the website into dist-build folder
+rm -rf dist
+
+# Cloning master branch (GH PAGES) into dist folder
+git clone -b master https://github.com/jbehuet/aikido.git dist/
+cd dist
+ls | grep -v -E ".git" | xargs rm -rf
+
+cd ..
+# Build app
+echo -e "* Build : ${Gre}(2/5)${RCol}"
 npm run build
 
-# Adding new files
-echo -e "* Add / Commit ${Gre}(2/4)${RCol}"
+# Add new resources
 cd dist
-git init
 git add .
-#git add dist --force
-git commit -m "Auto-deploy"
 
-# Pushing to deploy branch
-echo -e "* Push ${Gre}(3/4)${RCol}"
-git remote add origin https://github.com/jbehuet/aikido.git
-git push --force origin master
-#git subtree push --prefix dist origin master
-#git push origin `git subtree split --prefix dist master`:master --force
+echo -e "* Commit : ${Gre}(3/5)${RCol}"
+git commit -m "Auto-deploy - dist"
 
-# Cleaning
-echo -e "* Cleaning ${Gre}(4/4)${RCol}"
+
+echo -e "* Push to ${Yel}${ENV}${RCol}: ${Gre}(4/5)${RCol}"
+# Pushing to master branch, which is sync-ed with www.bdx.io ... only if there are more than 10 files in current directory
+git push origin master
 cd ..
+
+# Clean generated folders
+echo -e "* Clean : ${Gre}(5/5)${RCol}"
 rm -rf dist
-#git checkout dist
 
 echo
 echo '----------------------------------------------------------'
 echo -e "Deployed to : ${Cya}https://kihon.fr${RCol}"
 echo '----------------------------------------------------------'
-
