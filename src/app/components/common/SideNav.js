@@ -61,8 +61,9 @@ class SideNav extends Component {
 
   render() {
     const { filter } = this.state;
+    const { isMobile } = this.props;
     return (
-      <Drawer docked={false} width={200} open={this.props.open} onRequestChange={this.handleRequestChange}>
+      <Drawer docked={!isMobile} width={200} open={(isMobile ? this.props.open : true)} onRequestChange={this.handleRequestChange}>
 
         <MenuItem style={styles.header} disabled>Aikido - 合気道</MenuItem>
         <MenuItem onTouchTap={this.handleRequestChange}><Link to="/" style={styles.link}>Accueil</Link></MenuItem>
@@ -136,6 +137,7 @@ SideNav.propTypes = {
   onRequestChange: PropTypes.func.isRequired,
   onChangeKyu: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
+  isMobile: PropTypes.bool.isRequired,
 };
 
 export default connect()(withRouter(SideNav));

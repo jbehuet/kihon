@@ -7,13 +7,6 @@ import ViewModule from 'material-ui/svg-icons/action/view-module';
 
 import SideNav from './SideNav';
 
-const styles = {
-  header: {
-    position: 'fixed',
-    top: 0,
-  },
-};
-
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -46,7 +39,7 @@ class Header extends Component {
   }
 
   render() {
-    const { displayChangeViewIcon } = this.props;
+    const { displayChangeViewIcon, isMobile } = this.props;
     const rightButton = (this.state.list ? <ViewModule /> : <ViewList />);
     return (
       <div>
@@ -54,13 +47,15 @@ class Header extends Component {
           open={this.state.open}
           onRequestChange={this.handleLeftIconButtonTouchTap}
           onChangeKyu={this.handleChangeKyu}
+          isMobile={isMobile}
         />
         <AppBar
-          title="Aikido - 合気道"
-          style={styles.header}
+          title={(isMobile ? 'Aikido - 合気道' : '')}
+          style={{ position: 'fixed', top: 0, paddingLeft: (!isMobile ? '210px' : '24px') }}
           iconElementRight={displayChangeViewIcon ? <IconButton>{rightButton}</IconButton> : null}
           onRightIconButtonTouchTap={this.handleRightIconButtonTouchTap}
           onLeftIconButtonTouchTap={this.handleLeftIconButtonTouchTap}
+          iconStyleLeft={{ display: (!isMobile ? 'none' : '') }}
         />
       </div>
     );
@@ -70,6 +65,7 @@ class Header extends Component {
 Header.propTypes = {
   displayChangeViewIcon: PropTypes.bool.isRequired,
   onClickChangeView: PropTypes.func.isRequired,
+  isMobile: PropTypes.bool.isRequired,
 };
 
 export default Header;
