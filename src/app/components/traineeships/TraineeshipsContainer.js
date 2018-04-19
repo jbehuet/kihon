@@ -5,7 +5,6 @@ import { List, ListItem } from 'material-ui/List';
 import { Row, Col } from 'react-flexbox-grid';
 import CircularProgress from 'material-ui/CircularProgress';
 import moment from 'moment';
-import { set, get } from 'idb-keyval';
 
 const styles = {
   container: {
@@ -55,17 +54,18 @@ class TraineeshipsContainer extends Component {
   }
 
   componentDidMount() {
-    get('selectedRegion').then((selectedRegion) => {
-      if (selectedRegion) {
-        this.fetchTraineeships(selectedRegion);
-      }
-    });
+    // get('selectedRegion').then((selectedRegion) => {
+    // if (selectedRegion) {
+    //    this.fetchTraineeships(selectedRegion);
+    //  }
+    // });
   }
 
   handleChange(event, index, value) {
-    set('selectedRegion', value)
-      .then(() => this.fetchTraineeships(value))
-      .catch(err => console.log(err));
+    // set('selectedRegion', value)
+    //  .then(() => this.fetchTraineeships(value))
+    //  .catch(err => console.log(err));
+    this.fetchTraineeships(value);
   }
 
   fetchTraineeships(selectedRegion) {
