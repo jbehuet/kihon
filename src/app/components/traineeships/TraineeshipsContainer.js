@@ -50,11 +50,24 @@ class TraineeshipsContainer extends Component {
       error: null,
     };
     this.handleChange = this.handleChange.bind(this);
+    this.fetchTraineeships = this.fetchTraineeships.bind(this);
+  }
+
+  componentDidMount() {
+    const selectedRegion = localStorage.getItem('selectedRegion');
+    if (selectedRegion) {
+      this.fetchTraineeships(selectedRegion);
+    }
   }
 
   handleChange(event, index, value) {
-    this.setState({ selectedRegion: value, traineeships: [], loading: true });
-    fetch(`${BASE_URL}/${value}`)
+    localStorage.setItem('selectedRegion', value);
+    this.fetchTraineeships(value);
+  }
+
+  fetchTraineeships(selectedRegion) {
+    this.setState({ selectedRegion, traineeships: [], loading: true });
+    fetch(`${BASE_URL}/${selectedRegion}`)
       .then(res => res.json())
       .then(traineeships => this.setState({ traineeships, loading: false }))
       .catch((error) => {
@@ -64,13 +77,18 @@ class TraineeshipsContainer extends Component {
   }
 
   render() {
-    const { traineeships, loading, error } = this.state;
+    const {
+      selectedRegion,
+      traineeships,
+      loading,
+      error,
+    } = this.state;
     return (
       <div style={styles.container}>
         <div style={styles.select}>
           <SelectField
             floatingLabelText="Région"
-            value={this.state.selectedRegion}
+            value={selectedRegion}
             onChange={this.handleChange}
             style={styles.selectField}
           >

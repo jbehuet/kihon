@@ -17,6 +17,7 @@
   "globals": {
     "__DEV__": false,
     "window": false,
+    "localStorage": false,
     "fetch": false,
     "document": false,
     "navigator": false,
