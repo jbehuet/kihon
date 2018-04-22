@@ -7,9 +7,7 @@
   },
   "author": "Jérôme BEHUET<jbehuet@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-    "moment": "^2.22.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.1.1",
@@ -31,8 +29,10 @@
     "html-webpack-plugin": "^2.30.1",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
+    "localforage": "^1.7.1",
     "material-ui": "^0.17.0",
     "materialize-css": "^0.98.0",
+    "moment": "^2.22.0",
     "node-sass": "^4.5.0",
     "prop-types": "^15.6.0",
     "react": "^15.6.2",
