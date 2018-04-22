@@ -4,7 +4,7 @@ const movements = {
       id: '0',
       img: 'images/movements/Ikkyo.png',
       description: '<h3>一教</h3>\n' +
-        '<p>Fait parti des cinq principes fondamentaux des techniques en Aïkido qui est déclinée selon la posture et l\'attaque.</p>\\n' +
+        '<p>Fait parti des cinq principes fondamentaux des techniques en Aïkido qui est déclinée selon la posture et l\'attaque.</p>\n' +
         '<p><strong>Objectif</strong> : Contrôle du coude</p>\n' +
         '<p>Amener le uke au sol en contrôlant le coude.</p>',
       title: 'Ikkyo',
