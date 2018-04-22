@@ -7,7 +7,9 @@ import Divider from 'material-ui/Divider';
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import MenuItem from 'material-ui/MenuItem';
 import { List, ListItem } from 'material-ui/List';
+
 import { Actions } from '../../actions/MovementsActions';
+import { VERSION } from '../../Utils';
 
 const styles = {
   header: {
@@ -32,6 +34,11 @@ const styles = {
   },
   link: {
     display: 'block',
+  },
+  selected: {
+    display: 'block',
+    color: '#ab2330',
+    fontWeight: 'bold',
   },
   filter: {
     padding: '0px',
@@ -61,15 +68,15 @@ class SideNav extends Component {
 
   render() {
     const { filter } = this.state;
-    const { isMobile } = this.props;
+    const { isMobile, pathname } = this.props;
     return (
       <Drawer docked={!isMobile} width={200} open={(isMobile ? this.props.open : true)} onRequestChange={this.handleRequestChange}>
 
         <MenuItem style={styles.header} disabled>Aikido - 合気道</MenuItem>
-        <MenuItem onTouchTap={this.handleRequestChange}><Link to="/" style={styles.link}>Accueil</Link></MenuItem>
-        <Divider />
+        <MenuItem onTouchTap={this.handleRequestChange}><Link to="/" style={pathname === '/' ? styles.selected : styles.link}>Accueil</Link></MenuItem>
         <List style={styles.filter}>
           <ListItem
+            style={{ padding: '0px 10px' }}
             primaryText="Filtre"
             initiallyOpen={false}
             primaryTogglesNestedList
@@ -122,10 +129,10 @@ class SideNav extends Component {
           />
         </List>
         <Divider />
-        <MenuItem onTouchTap={this.handleRequestChange}><Link to="/traineeships" style={styles.link}>Stages</Link></MenuItem>
+        <MenuItem onTouchTap={this.handleRequestChange}><Link to="/traineeships" style={pathname === '/traineeships' ? styles.selected : styles.link}>Stages</Link></MenuItem>
         <Divider />
-        <MenuItem onTouchTap={this.handleRequestChange}><Link to="/about" style={styles.link}>A propos</Link></MenuItem>
-        <div style={styles.footer}>© 2018 - v0.1.4 - Images propriété FFAAA</div>
+        <MenuItem onTouchTap={this.handleRequestChange}><Link to="/about" style={pathname === '/about' ? styles.selected : styles.link}>A propos</Link></MenuItem>
+        <div style={styles.footer}>© 2018 - v{VERSION} - Images propriété FFAAA</div>
       </Drawer>
     );
   }
@@ -138,6 +145,7 @@ SideNav.propTypes = {
   onChangeKyu: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
   isMobile: PropTypes.bool.isRequired,
+  pathname: PropTypes.string.isRequired,
 };
 
 export default connect()(withRouter(SideNav));

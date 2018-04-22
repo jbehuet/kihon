@@ -41,7 +41,7 @@ class Main extends Component {
     return (
       <div style={{ height: '100%' }}>
         <Header
-          displayChangeViewIcon={(pathname === '/')}
+          pathname={pathname}
           onClickChangeView={this.handleChangeDisplay}
           isMobile={this.state.isMobile}
         />

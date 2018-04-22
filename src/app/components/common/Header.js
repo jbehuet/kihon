@@ -39,7 +39,7 @@ class Header extends Component {
   }
 
   render() {
-    const { displayChangeViewIcon, isMobile } = this.props;
+    const { pathname, isMobile } = this.props;
     const rightButton = (this.state.list ? <ViewModule /> : <ViewList />);
     return (
       <div>
@@ -48,11 +48,12 @@ class Header extends Component {
           onRequestChange={this.handleLeftIconButtonTouchTap}
           onChangeKyu={this.handleChangeKyu}
           isMobile={isMobile}
+          pathname={pathname}
         />
         <AppBar
           title={(isMobile ? 'Aikido - 合気道' : '')}
           style={{ position: 'fixed', top: 0, paddingLeft: (!isMobile ? '210px' : '24px') }}
-          iconElementRight={displayChangeViewIcon ? <IconButton>{rightButton}</IconButton> : null}
+          iconElementRight={pathname === '/' ? <IconButton>{rightButton}</IconButton> : null}
           onRightIconButtonTouchTap={this.handleRightIconButtonTouchTap}
           onLeftIconButtonTouchTap={this.handleLeftIconButtonTouchTap}
           iconStyleLeft={{ display: (!isMobile ? 'none' : '') }}
@@ -63,7 +64,7 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  displayChangeViewIcon: PropTypes.bool.isRequired,
+  pathname: PropTypes.string.isRequired,
   onClickChangeView: PropTypes.func.isRequired,
   isMobile: PropTypes.bool.isRequired,
 };

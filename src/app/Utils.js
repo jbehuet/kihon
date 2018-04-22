@@ -1,3 +1,3 @@
-export const capitalize = str => `${str.charAt(0).toUpperCase()}${str.slice(1)}`;
+export const VERSION = '0.1.5';
 
-export const _ = () => { };
+export const capitalize = str => `${str.charAt(0).toUpperCase()}${str.slice(1)}`;
