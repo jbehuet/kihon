@@ -78,7 +78,7 @@ class Movements extends Component {
   }
 
   renderTechniques() {
-    const styleRoot = { textAlign: this.props.list ? '' : 'center' };
+    const styleRoot = { textAlign: this.props.list ? '' : 'center', paddingLeft: this.props.list ? '10px' : '0' };
     return (
       <div style={styleRoot}>
         <h2>Immobilisations</h2>
@@ -96,7 +96,7 @@ class Movements extends Component {
   }
 
   renderAttacks() {
-    const styleRoot = { textAlign: (this.props.list ? '' : 'center') };
+    const styleRoot = { textAlign: this.props.list ? '' : 'center', paddingLeft: this.props.list ? '10px' : '0' };
     return (
       <div style={styleRoot}>
         <h2>Saisies</h2>
