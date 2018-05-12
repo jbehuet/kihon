@@ -27,7 +27,7 @@ const styles = {
   },
 };
 
-const BASE_URL = 'https://ics-to-json.jbehuet.fr/?url=http://www.stages-aikido.fr/public/icalendar';
+const BASE_URL = 'https://utils.jbehuet.fr/ics/?url=http://www.stages-aikido.fr/public/icalendar';
 
 const formatDate = (traineeship) => {
   moment.locale('fr');
