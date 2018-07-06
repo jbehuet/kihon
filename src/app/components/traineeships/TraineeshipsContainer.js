@@ -4,16 +4,16 @@ import MenuItem from 'material-ui/MenuItem';
 import { List, ListItem } from 'material-ui/List';
 import { Row, Col } from 'react-flexbox-grid';
 import CircularProgress from 'material-ui/CircularProgress';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import NotificationActive from 'material-ui/svg-icons/social/notifications-active';
+import NotificationOff from 'material-ui/svg-icons/social/notifications-off';
 import moment from 'moment';
 import localforage from 'localforage';
+
 
 const styles = {
   container: {
     marginTop: '64px',
-    backgroundImage: "url('images/bg3.png')",
-    backgroundRepeat: 'no-repeat',
-    backgroundAttachment: 'fixed',
-    backgroundPosition: 'center',
     height: 'calc(100vh - 64px)',
   },
   select: {
@@ -24,6 +24,12 @@ const styles = {
   },
   progress: {
     textAlign: 'center',
+  },
+  notify: {
+    zIndex: 9999,
+    position: 'fixed',
+    right: '10px',
+    bottom: '10px',
   },
 };
 
@@ -49,9 +55,11 @@ class TraineeshipsContainer extends Component {
       traineeships: [],
       loading: false,
       error: null,
+      subscriptionEnabled: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.fetchTraineeships = this.fetchTraineeships.bind(this);
+    this.subscribePush = this.subscribePush.bind(this);
   }
 
   componentDidMount() {
@@ -60,6 +68,29 @@ class TraineeshipsContainer extends Component {
         this.fetchTraineeships(selectedRegion);
       }
     });
+
+
+    // if (Notification.permission === 'denied') {
+    //   console.log('User has blocked push notification.');
+    //   return;
+    // }
+
+    // if (!('PushManager' in window)) {
+    //   console.log('Sorry, Push notification isn\'t supported in your browser.');
+    //   return;
+    // }
+
+    // navigator.serviceWorker.ready.then((registration) => {
+    //   registration.pushManager.getSubscription().then((subscription) => {
+    //     if (subscription) {
+    //       this.setState({ subscriptionEnabled: true });
+    //     } else {
+    //       this.setState({ subscriptionEnabled: false });
+    //     }
+    //   }).catch((error) => {
+    //     console.error('Error occurred while enabling push ', error);
+    //   });
+    // });
   }
 
   handleChange(event, index, value) {
@@ -79,12 +110,34 @@ class TraineeshipsContainer extends Component {
       });
   }
 
+  subscribePush() {
+    navigator.serviceWorker.ready.then((registration) => {
+      if (!registration.pushManager) {
+        console.log('Your browser doesn\'t support push notification.');
+        return;
+      }
+
+      registration.pushManager.subscribe({ userVisibleOnly: true })
+        .then((subscription) => {
+          console.info('Push notification subscribed.');
+          console.log(subscription);
+          // TODO API
+          this.setState({ subscriptionEnabled: true });
+        })
+        .catch((error) => {
+          this.setState({ subscriptionEnabled: false });
+          console.error('Push notification subscription error: ', error);
+        });
+    });
+  }
+
   render() {
     const {
       selectedRegion,
       traineeships,
       loading,
       error,
+      subscriptionEnabled
     } = this.state;
     return (
       <div style={styles.container}>
@@ -160,6 +213,13 @@ class TraineeshipsContainer extends Component {
             <p>¯\_(ツ)_/¯ Oupsss, please try again...</p>
           </div>
         }
+        {/* <FloatingActionButton style={styles.notify} backgroundColor={subscriptionEnabled ? '#ccc' : '#ab2330'} onClick={this.subscribePush}>
+          {subscriptionEnabled ?
+            <NotificationOff />
+            :
+            <NotificationActive />
+          }
+        </FloatingActionButton> */}
       </div>
     );
   }
