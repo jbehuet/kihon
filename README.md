@@ -20,6 +20,10 @@ npm i
 
 `npm run build`
 
+#### Deploy (to firebase)
+
+`firebase deploy`
+
 #### Contributing
 
 Fork it! 
