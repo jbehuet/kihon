@@ -23,7 +23,7 @@ import registerServiceWorker from "./registerServiceWorker";
 import store from "./Store";
 
 import ReactGA from "react-ga";
-if (!process.env.NODE_ENV) {
+if (process.env.NODE_ENV === "production") {
   ReactGA.initialize("UA-38322348-3");
 
   hashHistory.listen((location) => {
