@@ -14,7 +14,7 @@ npm i
 
 #### Development
 
-`npm start` serves the app on http://localhost:3000
+`npm start` serves the app on https://localhost.kihon.fr:8080
 
 #### Build
 

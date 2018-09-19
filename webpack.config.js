@@ -64,6 +64,9 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      "process.env.NODE_ENV": JSON.stringify("development")
+    }),
     new HtmlWebpackPlugin({
       inject: true,
       template: 'src/static/index.html'
