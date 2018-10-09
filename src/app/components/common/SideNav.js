@@ -72,7 +72,7 @@ class SideNav extends Component {
     return (
       <Drawer docked={!isMobile} width={200} open={(isMobile ? this.props.open : true)} onRequestChange={this.handleRequestChange}>
 
-        <MenuItem style={styles.header} disabled>Aikido - 合気道</MenuItem>
+        <MenuItem style={styles.header} disabled>Aïkido - 合気道</MenuItem>
         <MenuItem onTouchTap={this.handleRequestChange}><Link to="/" style={pathname === '/' ? styles.selected : styles.link}>Accueil</Link></MenuItem>
         <List style={styles.filter}>
           <ListItem

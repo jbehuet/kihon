@@ -25,8 +25,6 @@ const About = () => (
     <h2 style={styles.title}>Développement</h2>
     <p>Par <a href="http://jbehuet.fr">Jérôme BEHUET</a></p>
     <br />
-    <img src="images/logo-ffaaa.png" alt="" />
-    <br />
   </div>
 );
 
