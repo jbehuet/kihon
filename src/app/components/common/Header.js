@@ -51,7 +51,7 @@ class Header extends Component {
           pathname={pathname}
         />
         <AppBar
-          title={(isMobile ? 'Aikido - 合気道' : '')}
+          title={(isMobile ? 'Aïkido - 合気道' : '')}
           style={{ position: 'fixed', top: 0, paddingLeft: (!isMobile ? '210px' : '24px') }}
           iconElementRight={pathname === '/' ? <IconButton>{rightButton}</IconButton> : null}
           onRightIconButtonTouchTap={this.handleRightIconButtonTouchTap}
