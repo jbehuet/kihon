@@ -29,7 +29,7 @@ export default function register() {
                   // available; please refresh." message in your web app.
                   console.log("New content is available; please refresh.");
                   const response = confirm(
-                    "Une nouvelle version est disponible, veuillez-relancer l'application."
+                    "Une nouvelle version est disponible, l'application doit-être relancée."
                   );
                   if (response) {
                     window.location.reload();
