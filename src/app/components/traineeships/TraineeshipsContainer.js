@@ -7,9 +7,7 @@ import CircularProgress from 'material-ui/CircularProgress';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import NotificationActive from 'material-ui/svg-icons/social/notifications-active';
 import NotificationOff from 'material-ui/svg-icons/social/notifications-off';
-import moment from 'moment';
 import localforage from 'localforage';
-
 
 const styles = {
   container: {
@@ -33,42 +31,32 @@ const styles = {
   },
 };
 
-const BASE_URL = 'https://utils.jbehuet.fr/ics/?url=http://www.stages-aikido.fr/public/icalendar';
-
-const formatDate = (traineeship) => {
-  moment.locale('fr');
-
-  const start = moment(traineeship.dtstart);
-  const end = moment(traineeship.dtend);
-
-  if (end.isSame(start, 'day')) {
-    return `Le ${start.format('LL')}`;
-  }
-  return `Du ${start.format('DD')} au ${end.format('LL')}`;
-};
+const BASE_URL = 'https://api.stages-aikido.fr';
 
 class TraineeshipsContainer extends Component {
   constructor() {
     super();
     this.state = {
       selectedRegion: '',
+      regions: [],
       traineeships: [],
       loading: false,
       error: null,
       subscriptionEnabled: false,
     };
     this.handleChange = this.handleChange.bind(this);
+    this.fetchRegions = this.fetchRegions.bind(this);
     this.fetchTraineeships = this.fetchTraineeships.bind(this);
     this.subscribePush = this.subscribePush.bind(this);
   }
 
   componentDidMount() {
+    this.fetchRegions();
     localforage.getItem('selectedRegion').then((selectedRegion) => {
       if (selectedRegion) {
         this.fetchTraineeships(selectedRegion);
       }
     });
-
 
     // if (Notification.permission === 'denied') {
     //   console.log('User has blocked push notification.');
@@ -93,17 +81,31 @@ class TraineeshipsContainer extends Component {
     // });
   }
 
+  fetchRegions() {
+    fetch(`${BASE_URL}/regions`)
+      .then(res => res.json())
+      .then((regions) => {
+        this.setState({ regions: Object.keys(regions).map(key => ({ code: key, name: regions[key] })), loading: false });
+      })
+      .catch((error) => {
+        console.log(error);
+        this.setState({ error, loading: false });
+      });
+  }
+
   handleChange(event, index, value) {
-    localforage.setItem('selectedRegion', value)
+    this.setState({ selectedRegion: value });
+    localforage
+      .setItem('selectedRegion', value)
       .then(() => this.fetchTraineeships(value))
       .catch(err => console.log(err));
   }
 
   fetchTraineeships(selectedRegion) {
     this.setState({ selectedRegion, traineeships: [], loading: true });
-    fetch(`${BASE_URL}/${selectedRegion}`)
+    fetch(`${BASE_URL}/stages?region=${selectedRegion}`)
       .then(res => res.json())
-      .then(traineeships => this.setState({ traineeships, loading: false }))
+      .then(res => this.setState({ traineeships: res.stages, loading: false }))
       .catch((error) => {
         console.log(error);
         this.setState({ error, loading: false });
@@ -113,11 +115,12 @@ class TraineeshipsContainer extends Component {
   subscribePush() {
     navigator.serviceWorker.ready.then((registration) => {
       if (!registration.pushManager) {
-        console.log('Your browser doesn\'t support push notification.');
+        console.log("Your browser doesn't support push notification.");
         return;
       }
 
-      registration.pushManager.subscribe({ userVisibleOnly: true })
+      registration.pushManager
+        .subscribe({ userVisibleOnly: true })
         .then((subscription) => {
           console.info('Push notification subscribed.');
           console.log(subscription);
@@ -133,67 +136,40 @@ class TraineeshipsContainer extends Component {
 
   render() {
     const {
-      selectedRegion,
-      traineeships,
-      loading,
-      error,
-      subscriptionEnabled
+      selectedRegion, traineeships, regions, loading, error, subscriptionEnabled,
     } = this.state;
     return (
       <div style={styles.container}>
         <div style={styles.select}>
-          <SelectField
-            floatingLabelText="Région"
-            value={selectedRegion}
-            onChange={this.handleChange}
-            style={styles.selectField}
-          >
-            <MenuItem value="calendrier-stages-aikido-icalendar-region-alsace.ics" primaryText="Alsace" />
-            <MenuItem value="calendrier-stages-aikido-icalendar-region-aquitaine.ics" primaryText="Aquitaine" />
-            <MenuItem value="calendrier-stages-aikido-icalendar-region-auvergne.ics" primaryText="Auvergne" />
-            <MenuItem value="calendrier-stages-aikido-icalendar-region-basse-normandie.ics" primaryText="Basse Normandie" />
-            <MenuItem value="calendrier-stages-aikido-icalendar-region-bourgogne.ics" primaryText="Bourgogne" />
-            <MenuItem value="calendrier-stages-aikido-icalendar-region-bretagne.ics" primaryText="Bretagne" />
-            <MenuItem value="calendrier-stages-aikido-icalendar-region-centre.ics" primaryText="Centre" />
-            <MenuItem value="calendrier-stages-aikido-icalendar-region-champagne-ardenne.ics" primaryText="Champagne Ardenne" />
-            <MenuItem value="calendrier-stages-aikido-icalendar-region-corse.ics" primaryText="Corse" />
-            <MenuItem value="calendrier-stages-aikido-icalendar-region-dom-tom.ics" primaryText="DOM / TOM" />
-            <MenuItem value="calendrier-stages-aikido-icalendar-region-franche-comte.ics" primaryText="Franche Comté" />
-            <MenuItem value="calendrier-stages-aikido-icalendar-region-haute-normandie.ics" primaryText="Haute Normandie" />
-            <MenuItem value="calendrier-stages-aikido-icalendar-region-ile-de-france.ics" primaryText="Ile de France" />
-            <MenuItem value="calendrier-stages-aikido-icalendar-region-languedoc-roussillon.ics" primaryText="Languedoc Roussillon" />
-            <MenuItem value="calendrier-stages-aikido-icalendar-region-limousin.ics" primaryText="Limousin" />
-            <MenuItem value="calendrier-stages-aikido-icalendar-region-lorraine.ics" primaryText="Lorraine" />
-            <MenuItem value="calendrier-stages-aikido-icalendar-region-midi-pyrenees.ics" primaryText="Midi Pyrénées" />
-            <MenuItem value="calendrier-stages-aikido-icalendar-region-nord-pas-de-calais.ics" primaryText="Nord Pas de Calais" />
-            <MenuItem value="calendrier-stages-aikido-icalendar-region-pays-de-la-loire.ics" primaryText="Pays de la Loire" />
-            <MenuItem value="calendrier-stages-aikido-icalendar-region-picardie.ics" primaryText="Picardie" />
-            <MenuItem value="calendrier-stages-aikido-icalendar-region-poitou-charentes.ics" primaryText="Poitou Charentes" />
-            <MenuItem value="calendrier-stages-aikido-icalendar-region-provence-alpes-cote-d-azur.ics" primaryText="Provence Alpes Côte d'azur" />
-            <MenuItem value="calendrier-stages-aikido-icalendar-region-~-monaco.ics" primaryText="~Monaco" />
-            <MenuItem value="calendrier-stages-aikido-icalendar-region-~-suisse.ics" primaryText="~Suisse" />
-            <MenuItem value="calendrier-stages-aikido-icalendar-region-~-belgique.ics" primaryText="~Belgique" />
+          <SelectField floatingLabelText="Région" value={selectedRegion} onChange={this.handleChange} style={styles.selectField}>
+            {regions.map(region => (
+              <MenuItem key={region.code} value={region.code} primaryText={region.name} />
+            ))}
           </SelectField>
         </div>
-        {!loading && !error &&
+        {!loading && !error && (
           <div>
             <List>
               {traineeships.map(traineeship => (
-                <a key={traineeship.uid} href={traineeship.url} target="blank">
+                <a key={traineeship.id} href={traineeship.url} target="blank">
                   <ListItem
                     primaryText={
                       <Row>
                         <Col xs={12} md={6}>
-                          {formatDate(traineeship)}
+                          {traineeship.dateHumaine}
                         </Col>
                         <Col xs={12} md={6} className="text-right-desktop">
-                          {traineeship.location}
+                          {traineeship.ville}
                         </Col>
                       </Row>
                     }
                     secondaryText={
                       <p>
-                        <span>{traineeship.description}</span> -- {traineeship.summary}
+                        <span>{traineeship.animateur1}</span>
+                        <span>{traineeship.animateur2 && ` -- ${traineeship.animateur2}`}</span>
+                        <span>{traineeship.animateur3 && ` -- ${traineeship.animateur3}`}</span>
+                        <span>{traineeship.animateur4 && ` -- ${traineeship.animateur4}`}</span>
+                        <span>{traineeship.animateur5 && ` -- ${traineeship.animateur5}`}</span>
                       </p>
                     }
                     secondaryTextLines={2}
@@ -202,17 +178,17 @@ class TraineeshipsContainer extends Component {
               ))}
             </List>
           </div>
-        }
-        {loading && !error &&
+        )}
+        {loading && !error && (
           <div style={styles.progress}>
             <CircularProgress />
           </div>
-        }
-        {error &&
+        )}
+        {error && (
           <div style={styles.progress}>
             <p>¯\_(ツ)_/¯ Oupsss, please try again...</p>
           </div>
-        }
+        )}
         {/* <FloatingActionButton style={styles.notify} backgroundColor={subscriptionEnabled ? '#ccc' : '#ab2330'} onClick={this.subscribePush}>
           {subscriptionEnabled ?
             <NotificationOff />

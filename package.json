@@ -19,7 +19,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "copy-webpack-plugin": "^4.1.0",
-    "css-loader": "^0.28.7",
+    "css-loader": "^3.0.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.9.0",
@@ -31,8 +31,7 @@
     "less-loader": "^4.0.5",
     "localforage": "^1.7.1",
     "material-ui": "^0.17.0",
-    "materialize-css": "^0.98.0",
-    "moment": "^2.22.0",
+    "materialize-css": "^1.0.0",
     "node-sass": "^4.9.3",
     "prop-types": "^15.6.0",
     "react": "^15.6.2",
@@ -49,9 +48,9 @@
     "sass-loader": "^6.0.0",
     "style-loader": "^0.18.2",
     "sw-precache-webpack-plugin": "^0.11.5",
-    "url-loader": "^0.5.9",
+    "url-loader": "^2.0.1",
     "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.8.2",
+    "webpack-dev-server": "^2.9.1",
     "webpack-manifest-plugin": "^2.0.0-rc.2"
   }
 }
