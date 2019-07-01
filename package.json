@@ -1,6 +1,6 @@
 {
   "name": "aikido",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "scripts": {
     "start": "webpack-dev-server -d --hot --inline --history-api-fallback --content-base ./src/static",
     "build": "webpack --config webpack.config.prod.js --progress -p"
