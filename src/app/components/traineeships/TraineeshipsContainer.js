@@ -8,6 +8,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import NotificationActive from 'material-ui/svg-icons/social/notifications-active';
 import NotificationOff from 'material-ui/svg-icons/social/notifications-off';
 import localforage from 'localforage';
+import { messaging } from '../../Messaging';
 
 const styles = {
   container: {
@@ -57,28 +58,6 @@ class TraineeshipsContainer extends Component {
         this.fetchTraineeships(selectedRegion);
       }
     });
-
-    // if (Notification.permission === 'denied') {
-    //   console.log('User has blocked push notification.');
-    //   return;
-    // }
-
-    // if (!('PushManager' in window)) {
-    //   console.log('Sorry, Push notification isn\'t supported in your browser.');
-    //   return;
-    // }
-
-    // navigator.serviceWorker.ready.then((registration) => {
-    //   registration.pushManager.getSubscription().then((subscription) => {
-    //     if (subscription) {
-    //       this.setState({ subscriptionEnabled: true });
-    //     } else {
-    //       this.setState({ subscriptionEnabled: false });
-    //     }
-    //   }).catch((error) => {
-    //     console.error('Error occurred while enabling push ', error);
-    //   });
-    // });
   }
 
   fetchRegions() {
@@ -113,25 +92,28 @@ class TraineeshipsContainer extends Component {
   }
 
   subscribePush() {
-    navigator.serviceWorker.ready.then((registration) => {
-      if (!registration.pushManager) {
-        console.log("Your browser doesn't support push notification.");
-        return;
-      }
+    const { subscriptionEnabled, selectedRegion } = this.state;
+    this.setState({ subscriptionEnabled: !subscriptionEnabled });
 
-      registration.pushManager
-        .subscribe({ userVisibleOnly: true })
-        .then((subscription) => {
-          console.info('Push notification subscribed.');
-          console.log(subscription);
-          // TODO API
-          this.setState({ subscriptionEnabled: true });
+    if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+      messaging
+        .requestPermission()
+        .then(async () => {
+          const token = await messaging.getToken();
+
+          await fetch(`https://utils.jbehuet.fr/messaging/${subscriptionEnabled ? 'unsubscribe' : 'subscribe'}`, {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ application: 'kihon', token, data: { region: selectedRegion } }),
+          });
         })
-        .catch((error) => {
-          this.setState({ subscriptionEnabled: false });
-          console.error('Push notification subscription error: ', error);
+        .catch((err) => {
+          console.log('Unable to get permission to notify.', err);
         });
-    });
+    }
   }
 
   render() {
@@ -189,13 +171,11 @@ class TraineeshipsContainer extends Component {
             <p>¯\_(ツ)_/¯ Oupsss, please try again...</p>
           </div>
         )}
-        {/* <FloatingActionButton style={styles.notify} backgroundColor={subscriptionEnabled ? '#ccc' : '#ab2330'} onClick={this.subscribePush}>
-          {subscriptionEnabled ?
-            <NotificationOff />
-            :
-            <NotificationActive />
-          }
-        </FloatingActionButton> */}
+        {selectedRegion && (
+          <FloatingActionButton style={styles.notify} backgroundColor={subscriptionEnabled ? '#ccc' : '#ab2330'} onClick={this.subscribePush}>
+            {subscriptionEnabled ? <NotificationOff /> : <NotificationActive />}
+          </FloatingActionButton>
+        )}
       </div>
     );
   }
