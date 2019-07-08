@@ -72,7 +72,7 @@ class TraineeshipsContainer extends Component {
           const token = await messaging.getToken();
           this.setState({ token });
 
-          fetch(`https://utils.jbehuet.fr/messaging/subscription/kihon/${token}}`)
+          fetch(`https://utils.jbehuet.fr/messaging/subscription/kihon/${token}`)
             .then(res => res.json())
             .then((subscription) => {
               this.setState({ subscription });
@@ -90,7 +90,7 @@ class TraineeshipsContainer extends Component {
     localforage
       .setItem('selectedRegion', value)
       .then(() =>
-        fetch(`https://utils.jbehuet.fr/messaging/subscription/${subscription._id}}`, {
+        fetch(`https://utils.jbehuet.fr/messaging/subscription/${subscription._id}`, {
           method: 'PUT',
           headers: {
             Accept: 'application/json',
