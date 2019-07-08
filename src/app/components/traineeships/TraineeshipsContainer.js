@@ -73,7 +73,7 @@ class TraineeshipsContainer extends Component {
           this.setState({ token });
 
           fetch(`https://utils.jbehuet.fr/messaging/subscription/kihon/${token}`)
-            .then(res => res.json())
+            .then(res => (res ? res.json() : null))
             .then((subscription) => {
               this.setState({ subscription });
             });
@@ -138,7 +138,7 @@ class TraineeshipsContainer extends Component {
       },
       body: JSON.stringify({ application: 'kihon', token, data: { region: selectedRegion } }),
     })
-      .then(res => res.json())
+      .then(res => (res ? res.json() : null))
       .then(res => this.setState({ subscription: res }));
   }
 
