@@ -127,22 +127,23 @@ class TraineeshipsContainer extends Component {
   }
 
   subscribePush() {
-    const { subscriptionEnabled, selectedRegion, token } = this.state;
-    this.setState({ subscriptionEnabled: !subscriptionEnabled });
+    const { subscription, selectedRegion, token } = this.state;
 
-    fetch(`https://utils.jbehuet.fr/messaging/${subscriptionEnabled ? 'unsubscribe' : 'subscribe'}`, {
+    fetch(`https://utils.jbehuet.fr/messaging/${subscription ? 'unsubscribe' : 'subscribe'}`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ application: 'kihon', token, data: { region: selectedRegion } }),
-    });
+    })
+      .then(res => res.json())
+      .then(res => this.setState({ subscription: res }));
   }
 
   render() {
     const {
-      selectedRegion, traineeships, regions, loading, error, subscriptionEnabled, token,
+      selectedRegion, traineeships, regions, loading, error, subscription, token,
     } = this.state;
     return (
       <div style={styles.container}>
@@ -196,8 +197,8 @@ class TraineeshipsContainer extends Component {
           </div>
         )}
         {!!token && selectedRegion && (
-          <FloatingActionButton style={styles.notify} backgroundColor={subscriptionEnabled ? '#ccc' : '#ab2330'} onClick={this.subscribePush}>
-            {subscriptionEnabled ? <NotificationOff /> : <NotificationActive />}
+          <FloatingActionButton style={styles.notify} backgroundColor={subscription ? '#ccc' : '#ab2330'} onClick={this.subscribePush}>
+            {subscription ? <NotificationOff /> : <NotificationActive />}
           </FloatingActionButton>
         )}
       </div>
