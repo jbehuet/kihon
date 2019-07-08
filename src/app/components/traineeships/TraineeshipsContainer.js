@@ -97,7 +97,7 @@ class TraineeshipsContainer extends Component {
             Accept: 'application/json',
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ data: { region: value } }),
+          body: JSON.stringify({ ...subscription, data: { region: value } }),
         });
       })
       .then(() => this.fetchTraineeships(value))
