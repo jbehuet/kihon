@@ -89,7 +89,8 @@ class TraineeshipsContainer extends Component {
     this.setState({ selectedRegion: value });
     localforage
       .setItem('selectedRegion', value)
-      .then(() =>
+      .then(() => {
+        if (!subscription) return;
         fetch(`https://utils.jbehuet.fr/messaging/subscription/${subscription._id}`, {
           method: 'PUT',
           headers: {
@@ -97,8 +98,8 @@ class TraineeshipsContainer extends Component {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({ data: { region: value } }),
-        }),
-      )
+        });
+      })
       .then(() => this.fetchTraineeships(value))
       .catch(err => console.log(err));
   }
