@@ -43,7 +43,6 @@ class TraineeshipsContainer extends Component {
       traineeships: [],
       loading: false,
       error: null,
-      subscriptionEnabled: false,
       token: '',
       subscription: null,
     };
@@ -73,10 +72,11 @@ class TraineeshipsContainer extends Component {
           this.setState({ token });
 
           fetch(`https://utils.jbehuet.fr/messaging/subscription/kihon/${token}`)
-            .then(res => (res.length > 0 ? res.json() : null))
+            .then(res => (res.status === 200 ? res.json() : null))
             .then((subscription) => {
               this.setState({ subscription });
-            });
+            })
+            .catch(err => console.log(err));
         })
         .catch((err) => {
           console.log('Unable to get permission to notify.', err);
@@ -138,8 +138,12 @@ class TraineeshipsContainer extends Component {
       },
       body: JSON.stringify({ application: 'kihon', token, data: { region: selectedRegion } }),
     })
-      .then(res => (res.length > 0 ? res.json() : null))
-      .then(res => this.setState({ subscription: res }));
+      .then(res => (res.status === 201 ? res.json() : null))
+      .then(res => this.setState({ subscription: res }))
+      .catch((error) => {
+        console.log(error);
+        this.setState({ error, loading: false, subscription: null });
+      });
   }
 
   render() {
