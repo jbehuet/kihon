@@ -44,7 +44,10 @@ class TraineeshipsContainer extends Component {
       loading: false,
       error: null,
       subscriptionEnabled: false,
+      token: '',
+      subscription: null,
     };
+    this.getMessagingToken = this.getMessagingToken.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.fetchRegions = this.fetchRegions.bind(this);
     this.fetchTraineeships = this.fetchTraineeships.bind(this);
@@ -52,12 +55,52 @@ class TraineeshipsContainer extends Component {
   }
 
   componentDidMount() {
+    this.getMessagingToken();
     this.fetchRegions();
     localforage.getItem('selectedRegion').then((selectedRegion) => {
       if (selectedRegion) {
         this.fetchTraineeships(selectedRegion);
       }
     });
+  }
+
+  getMessagingToken() {
+    if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+      messaging
+        .requestPermission()
+        .then(async () => {
+          const token = await messaging.getToken();
+          this.setState({ token });
+
+          fetch(`https://utils.jbehuet.fr/messaging/subscription/kihon/${token}}`)
+            .then(res => res.json())
+            .then((subscription) => {
+              this.setState({ subscription });
+            });
+        })
+        .catch((err) => {
+          console.log('Unable to get permission to notify.', err);
+        });
+    }
+  }
+
+  handleChange(event, index, value) {
+    const { subscription } = this.state;
+    this.setState({ selectedRegion: value });
+    localforage
+      .setItem('selectedRegion', value)
+      .then(() =>
+        fetch(`https://utils.jbehuet.fr/messaging/subscription/${subscription._id}}`, {
+          method: 'PUT',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ data: { region: value } }),
+        }),
+      )
+      .then(() => this.fetchTraineeships(value))
+      .catch(err => console.log(err));
   }
 
   fetchRegions() {
@@ -72,14 +115,6 @@ class TraineeshipsContainer extends Component {
       });
   }
 
-  handleChange(event, index, value) {
-    this.setState({ selectedRegion: value });
-    localforage
-      .setItem('selectedRegion', value)
-      .then(() => this.fetchTraineeships(value))
-      .catch(err => console.log(err));
-  }
-
   fetchTraineeships(selectedRegion) {
     this.setState({ selectedRegion, traineeships: [], loading: true });
     fetch(`${BASE_URL}/stages?region=${selectedRegion}`)
@@ -92,33 +127,22 @@ class TraineeshipsContainer extends Component {
   }
 
   subscribePush() {
-    const { subscriptionEnabled, selectedRegion } = this.state;
+    const { subscriptionEnabled, selectedRegion, token } = this.state;
     this.setState({ subscriptionEnabled: !subscriptionEnabled });
 
-    if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
-      messaging
-        .requestPermission()
-        .then(async () => {
-          const token = await messaging.getToken();
-
-          await fetch(`https://utils.jbehuet.fr/messaging/${subscriptionEnabled ? 'unsubscribe' : 'subscribe'}`, {
-            method: 'POST',
-            headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ application: 'kihon', token, data: { region: selectedRegion } }),
-          });
-        })
-        .catch((err) => {
-          console.log('Unable to get permission to notify.', err);
-        });
-    }
+    fetch(`https://utils.jbehuet.fr/messaging/${subscriptionEnabled ? 'unsubscribe' : 'subscribe'}`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ application: 'kihon', token, data: { region: selectedRegion } }),
+    });
   }
 
   render() {
     const {
-      selectedRegion, traineeships, regions, loading, error, subscriptionEnabled,
+      selectedRegion, traineeships, regions, loading, error, subscriptionEnabled, token,
     } = this.state;
     return (
       <div style={styles.container}>
@@ -171,7 +195,7 @@ class TraineeshipsContainer extends Component {
             <p>¯\_(ツ)_/¯ Oupsss, please try again...</p>
           </div>
         )}
-        {selectedRegion && (
+        {!!token && selectedRegion && (
           <FloatingActionButton style={styles.notify} backgroundColor={subscriptionEnabled ? '#ccc' : '#ab2330'} onClick={this.subscribePush}>
             {subscriptionEnabled ? <NotificationOff /> : <NotificationActive />}
           </FloatingActionButton>
