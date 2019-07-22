@@ -25,7 +25,7 @@ module.exports = {
     host: 'localhost.kihon.fr',
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /.jsx?$/,
         loaders: ['babel-loader'],
@@ -35,7 +35,7 @@ module.exports = {
       {
         test: /\.css$/,
         loader: 'style-loader!css-loader?modules',
-        include: /flexboxgrid/
+        include: /flexboxgrid/,
       },
       {
         test: /.scss$/,
