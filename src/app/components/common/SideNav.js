@@ -132,7 +132,7 @@ class SideNav extends Component {
         <MenuItem onTouchTap={this.handleRequestChange}><Link to="/traineeships" style={pathname === '/traineeships' ? styles.selected : styles.link}>Stages</Link></MenuItem>
         <Divider />
         <MenuItem onTouchTap={this.handleRequestChange}><Link to="/about" style={pathname === '/about' ? styles.selected : styles.link}>A propos</Link></MenuItem>
-        <div style={styles.footer}>© 2018 - v{VERSION} - Images propriété FFAAA</div>
+        <div style={styles.footer}>© ${new Date().getFullYear()} - v{VERSION} - Images propriété FFAAA</div>
       </Drawer>
     );
   }
