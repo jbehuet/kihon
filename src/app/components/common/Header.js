@@ -54,8 +54,8 @@ class Header extends Component {
           title={(isMobile ? 'Aïkido - 合気道' : '')}
           style={{ position: 'fixed', top: 0, paddingLeft: (!isMobile ? '210px' : '24px') }}
           iconElementRight={pathname === '/' ? <IconButton>{rightButton}</IconButton> : null}
-          onRightIconButtonTouchTap={this.handleRightIconButtonTouchTap}
-          onLeftIconButtonTouchTap={this.handleLeftIconButtonTouchTap}
+          onRightIconButtonClick={this.handleRightIconButtonTouchTap}
+          onLeftIconButtonClick={this.handleLeftIconButtonTouchTap}
           iconStyleLeft={{ display: (!isMobile ? 'none' : '') }}
         />
       </div>
