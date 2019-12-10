@@ -30,6 +30,7 @@ const styles = {
   },
   close: {
     position: 'absolute',
+    zIndex: 9999,
   },
 };
 
