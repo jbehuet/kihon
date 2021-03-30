@@ -22,14 +22,6 @@ import registerServiceWorker from './registerServiceWorker';
 // Redux Store
 import store from './Store';
 
-import { MatomoProvider, createInstance } from '@datapunt/matomo-tracker-react'
-
-const matomo = createInstance({
-  urlBase: 'https://analytics.deexit.dev/',
-  siteId: 2,
-  disabled: process.env.NODE_ENV !== 'production'
-})
-
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
@@ -48,20 +40,18 @@ const muiTheme = getMuiTheme({
 });
 
 ReactDOM.render(
-  <MatomoProvider value={matomo}>
-    <MuiThemeProvider muiTheme={muiTheme}>
-      <Provider store={store}>
-        <Router history={hashHistory}>
-          <Route path="/" component={Main}>
-            <IndexRoute component={MovementsContainer} />
-            <Route path="/:category/:subcategory/:id" component={Movement} />
-            <Route path="/traineeships" component={TraineeshipsContainer} />
-            <Route path="/about" component={About} />
-          </Route>
-        </Router>
-      </Provider>
-    </MuiThemeProvider>
-  </MatomoProvider>,
+  <MuiThemeProvider muiTheme={muiTheme}>
+    <Provider store={store}>
+      <Router history={hashHistory}>
+        <Route path="/" component={Main}>
+          <IndexRoute component={MovementsContainer} />
+          <Route path="/:category/:subcategory/:id" component={Movement} />
+          <Route path="/traineeships" component={TraineeshipsContainer} />
+          <Route path="/about" component={About} />
+        </Route>
+      </Router>
+    </Provider>
+  </MuiThemeProvider>,
   document.getElementById('app'),
 );
 
