@@ -30,7 +30,7 @@
     "localforage": "^1.7.3",
     "material-ui": "^0.20.2",
     "materialize-css": "^1.0.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
@@ -48,7 +48,7 @@
     "url-loader": "^2.0.1",
     "webpack": "^4.36.1",
     "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.7.2",
+    "webpack-dev-server": "^3.11.2",
     "webpack-manifest-plugin": "^2.2.0"
   }
 }
