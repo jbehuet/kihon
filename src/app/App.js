@@ -22,18 +22,13 @@ import registerServiceWorker from './registerServiceWorker';
 // Redux Store
 import store from './Store';
 
-import ReactGA from 'react-ga';
+import { MatomoProvider, createInstance } from '@datapunt/matomo-tracker-react'
 
-if (process.env.NODE_ENV === 'production') {
-  ReactGA.initialize('UA-38322348-3');
-
-  hashHistory.listen((location) => {
-    const { pathname, action } = location;
-    if (action === 'PUSH') {
-      ReactGA.pageview(pathname);
-    }
-  });
-}
+const matomo = createInstance({
+  urlBase: 'https://analytics.deexit.dev',
+  siteId: 2,
+  disabled: process.env.NODE_ENV !== 'production'
+})
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -53,18 +48,20 @@ const muiTheme = getMuiTheme({
 });
 
 ReactDOM.render(
-  <MuiThemeProvider muiTheme={muiTheme}>
-    <Provider store={store}>
-      <Router history={hashHistory}>
-        <Route path="/" component={Main}>
-          <IndexRoute component={MovementsContainer} />
-          <Route path="/:category/:subcategory/:id" component={Movement} />
-          <Route path="/traineeships" component={TraineeshipsContainer} />
-          <Route path="/about" component={About} />
-        </Route>
-      </Router>
-    </Provider>
-  </MuiThemeProvider>,
+  <MatomoProvider value={matomo}>
+    <MuiThemeProvider muiTheme={muiTheme}>
+      <Provider store={store}>
+        <Router history={hashHistory}>
+          <Route path="/" component={Main}>
+            <IndexRoute component={MovementsContainer} />
+            <Route path="/:category/:subcategory/:id" component={Movement} />
+            <Route path="/traineeships" component={TraineeshipsContainer} />
+            <Route path="/about" component={About} />
+          </Route>
+        </Router>
+      </Provider>
+    </MuiThemeProvider>
+  </MatomoProvider>,
   document.getElementById('app'),
 );
 

@@ -7,8 +7,8 @@
   },
   "author": "Jérôme BEHUET<jbehuet@gmail.com>",
   "license": "MIT",
-  "dependencies": {},
   "devDependencies": {
+    "@datapunt/matomo-tracker-react": "^0.4.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^7.1.5",
@@ -36,7 +36,6 @@
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "react-flexbox-grid": "^2.1.2",
-    "react-ga": "^2.7.0",
     "react-hot-loader": "^4.12.15",
     "react-lazyload": "^2.6.2",
     "react-redux": "^5.1.2",
