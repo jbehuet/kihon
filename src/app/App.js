@@ -25,7 +25,7 @@ import store from './Store';
 import { MatomoProvider, createInstance } from '@datapunt/matomo-tracker-react'
 
 const matomo = createInstance({
-  urlBase: 'https://analytics.deexit.dev',
+  urlBase: 'https://analytics.deexit.dev/',
   siteId: 2,
   disabled: process.env.NODE_ENV !== 'production'
 })
