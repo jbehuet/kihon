@@ -32,7 +32,7 @@
     "materialize-css": "^1.0.0",
     "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
-    "react": "^15.6.2",
+    "react": "^15.7.0",
     "react-dom": "^15.6.2",
     "react-flexbox-grid": "^2.1.2",
     "react-hot-loader": "^4.12.15",
